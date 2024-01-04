@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurements for Kids</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        input {
+            width: 80px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        select {
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Measurements for Kids</h1>
+
+    <label for="category">Choose Category:</label>
+    <select id="category" onchange="updateUnits()">
+        <option value="length">Length</option>
+        <option value="weight">Weight</option>
+    </select>
+
+    <br>
+
+    <label for="fromUnit">Convert from:</label>
+    <select id="fromUnit"></select>
+
+    <br>
+
+    <label for="value">Enter Value:</label>
+    <input type="number" id="value">
+
+    <br>
+
+    <label for="toUnit">Convert to:</label>
+    <select id="toUnit"></select>
+
+    <br>
+
+    <button onclick="convert()">Convert</button>
+
+    <div id="result"></div>
+
+    <script>
+        // Populate units based on the selected category
+        function updateUnits() {
+            var category = document.getElementById('category').value;
+            var fromUnitSelect = document.getElementById('fromUnit');
+            var toUnitSelect = document.getElementById('toUnit');
+
+            fromUnitSelect.innerHTML = '';
+            toUnitSelect.innerHTML = '';
+
+            var units = category === 'length' ? ['meters', 'centimeters'] : ['kilograms', 'grams'];
+
+            units.forEach(function(unit) {
+                var option = document.createElement('option');
+                option.value = unit;
+                option.text = unit.charAt(0).toUpperCase() + unit.slice(1); // Capitalize first letter
+                fromUnitSelect.add(option);
+            });
+
+            units.forEach(function(unit) {
+                var option = document.createElement('option');
+                option.value = unit;
+                option.text = unit.charAt(0).toUpperCase() + unit.slice(1); // Capitalize first letter
+                toUnitSelect.add(option);
+            });
+        }
+
+        // Perform the conversion
+        function convert() {
+            var fromUnit = document.getElementById('fromUnit').value;
+            var toUnit = document.getElementById('toUnit').value;
+            var value = parseFloat(document.getElementById('value').value);
+
+            if (isNaN(value)) {
+                alert('Please enter a valid number.');
+                return;
+            }
+
+            var result = '';
+
+            if (fromUnit === 'meters' && toUnit === 'centimeters') {
+                result = value + ' meters is equal to ' + (value * 100) + ' centimeters.';
+            } else if (fromUnit === 'centimeters' && toUnit === 'meters') {
+                result = value + ' centimeters is equal to ' + (value / 100) + ' meters.';
+            } else if (fromUnit === 'kilograms' && toUnit === 'grams') {
+                result = value + ' kilograms is equal to ' + (value * 1000) + ' grams.';
+            } else if (fromUnit === 'grams' && toUnit === 'kilograms') {
+                result = value + ' grams is equal to ' + (value / 1000) + ' kilograms.';
+            } else {
+                result = 'Please select valid units for conversion.';
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+
+        // Initial update of units when the page loads
+        updateUnits();
+    </script>
+</body>
+</html>

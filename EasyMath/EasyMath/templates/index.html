@@ -276,9 +276,9 @@
                                             12 ÷ 3 = 4<br></div></p>
                                     </div>
 
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <button class="btn btn-primary" onclick="goToCalculator()">
                                         <i class="fas fa-xmark fa-fw"></i>
-                                        Close Window
+                                        Kalkulator
                                     </button>
                                 </div>
                             </div>
@@ -298,7 +298,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Pengukuran Asas</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -320,9 +320,9 @@
                                     </div>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <button class="btn btn-primary" onclick="goToConverter()">
                                         <i class="fas fa-xmark fa-fw"></i>
-                                        Close Window
+                                        Converter
                                     </button>
                                 </div>
                             </div>
@@ -359,34 +359,36 @@
 
                             <div class="container">
     <div class="row flex-wrap">
-        <div class="col-lg-6 mb-5 mb-lg-0 d-inline">
+        <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/easy.png" alt="..." style="width: 80%; max-height: 200px;">
             </div>
         </div>
 
-        <div class="col-lg-6 mb-5 mb-lg-0 d-inline">
+        <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/medium.png" alt="..." style="width: 80%; max-height: 200px;">
             </div>
         </div>
 
-        <div class="col-lg-6 mb-5 mb-lg-0 d-inline">
+        <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/hard.png" alt="..." style="width: 80%; max-height: 200px;">
             </div>
         </div>
     </div>
 </div>
+
+
                                 <!-- You can customize the button text and style here -->
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
@@ -411,7 +413,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Pegukuran Asas</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -426,7 +428,7 @@
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/easy.png" alt="..." />
             </div>
         </div>
 
@@ -435,7 +437,7 @@
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/medium.png" alt="..." />
             </div>
         </div>
 
@@ -444,7 +446,7 @@
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
+                <img class="img-fluid rounded" src="../static/assets/img/hard.png" alt="..." />
             </div>
         </div>
     </div>
@@ -470,5 +472,14 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+    function goToCalculator() {
+        window.location.href = '/calculator';
+    }
+
+    function goToConverter() {
+        window.location.href = '/measurement';
+    }
+</script>
     </body>
 </html>
