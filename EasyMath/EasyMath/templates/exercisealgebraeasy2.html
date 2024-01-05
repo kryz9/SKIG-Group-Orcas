@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Page</title>
+    <!-- Add your CSS styles here -->
+</head>
+<body>
+    <h1>Exercise Page</h1>
+    <div id="exercise-container">
+        <!-- Your exercise content goes here -->
+        <p>Question 1: What is 2 + 2?</p>
+        <input type="text" id="answer">
+        <button onclick="checkAnswer()">Submit Answer</button>
+        <button onclick="goToNextPage()">Next</button>
+    </div>
+    <div id="result"></div>
+    <script src="{{ url_for('static', filename='exercise.js') }}"></script>
+    <script> function goToNextPage() {
+            window.location.href = '/exercisealgebraeasy3'
+        }
+</script>
+</body>
+</html>
