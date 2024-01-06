@@ -1,4 +1,5 @@
 import secrets
+import os
 
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
@@ -20,6 +21,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_config['use
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+# Define the path to the uploads folder
+UPLOAD_FOLDER = os.path.join('../static/assets/upload')
+
+# Ensure the uploads folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+# Set the upload folder configuration
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Define the allowed extensions for profile pictures
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+# Function to check if the file extension is allowed
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Define your models (replace this with your actual models)
 class User(db.Model):
@@ -160,6 +177,8 @@ def main():
   # Get the current user object and render the main template with the user data
   user = get_current_user()
   return render_template('index.html', user=user, error=None)
+
+
 
 @app.route('/calculator')
 def calculator():
