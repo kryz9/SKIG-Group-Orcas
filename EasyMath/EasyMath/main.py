@@ -4,18 +4,19 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
+import mysql.connector
 
 # Database configuration
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '1234',
+    'password': '',
     'database': 'math'
 }
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SECRET_KEY'] = secrets.token_hex(16)
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_config['user']}:{db_config['password']}@{db_config['host']}/{db_config['database']}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -24,8 +25,8 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
     photo = db.Column(db.String(100), nullable=True)
 
     def __repr__(self):
@@ -63,10 +64,12 @@ def get_current_user():
 
 
 #ROUTING PART
+# Define the route for the landing page
 @app.route('/')
 def index():
-    return render_template('landing-page.html', error=None)
+  return render_template('landing-page.html')
 
+# Define the route for the sign up page
 # Define the route for the sign up page
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -77,25 +80,25 @@ def signup():
   # If the request method is POST, get the form data and validate it
   if request.method == 'POST':
     name = request.form.get('name')
-    username = request.form.get('username')
+    email = request.form.get('email')
     password = request.form.get('password')
     confirm = request.form.get('confirm')
 
     # Check if the name, email, and password are not empty
-    if not name or not username or not password:
-      return render_template('signup.html', message='Sila isikan maklumat anda di ruangan kosong.')
+    if not name or not email or not password:
+      return render_template('sign-up.html', message='Please fill in all the fields.')
 
     # Check if the password and confirm password match
     if password != confirm:
-      return render_template('signup.html', message='Kata lalua tidak padan.')
+      return render_template('sign-up.html', message='Passwords do not match.')
 
     # Check if the email already exists in the database
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if user:
-      return render_template('signup.html', message='Tahniah, akaun ada telah berjaya didaftarkan.')
+      return render_template('sign-up.html', message='Email already registered.')
 
     # Create a new user object with the hashed password
-    user = User(name=name, username=username, password=generate_password_hash(password))
+    user = User(name=name, email=email, password=generate_password_hash(password))
 
     # Add the user to the database and commit the changes
     db.session.add(user)
@@ -106,7 +109,7 @@ def signup():
     return redirect(url_for('main'))
 
   # If the request method is GET, render the sign up template
-  return render_template('signup.html')
+  return render_template('sign-up.html')
 
 # Define the route for the login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -117,15 +120,15 @@ def login():
 
   # If the request method is POST, get the form data and validate it
   if request.method == 'POST':
-    username = request.form.get('username')
+    email = request.form.get('email')
     password = request.form.get('password')
 
     # Check if the email and password are not empty
-    if not username or not password:
+    if not email or not password:
       return render_template('login.html', message='Please fill in all the fields.')
 
     # Check if the email exists in the database
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(email=email).first()
     if not user:
       return render_template('login.html', message='Invalid email or password.')
 
