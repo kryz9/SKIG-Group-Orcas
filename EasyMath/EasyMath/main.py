@@ -1,5 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import secrets
 
 # Database configuration
 db_config = {
@@ -22,6 +25,9 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
 
+    def __repr__(self):
+        return f'<User {self.id}>'
+
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # Add your Exercise model fields here
@@ -32,6 +38,29 @@ class UserProgress(db.Model):
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'), nullable=True)
     is_correct = db.Column(db.Boolean, nullable=True)
 
+
+# Set the secret key for the application using the app.secret_key attribute
+app.secret_key = secrets.token_hex(16)
+
+# Alternatively, you can set the secret key using the app.config['SECRET_KEY'] dictionary
+app.config['SECRET_KEY'] = secrets.token_hex(16)
+
+# Set up an application context with app.app_context()
+with app.app_context():
+  # Create the database tables by calling the db.create_all() method
+  db.create_all()
+
+# Define a function that checks if the user is logged in
+def is_logged_in():
+  return 'user_id' in session
+
+# Define a function that gets the current user object
+def get_current_user():
+  if is_logged_in():
+    return User.query.get(session['user_id'])
+
+
+#ROUTING PART
 @app.route('/')
 def index():
     return render_template('index.html', error=None)
