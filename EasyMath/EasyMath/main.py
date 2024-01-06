@@ -1,7 +1,6 @@
 import secrets
-import sqlite3
 
-from flask import Flask, render_template, request, session, redirect, url_for, send_from_directory, flash
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -16,7 +15,7 @@ db_config = {
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////static/assets/db/User.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -26,10 +25,11 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(128), nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    photo = db.Column(db.String(100), nullable=True)
 
     def __repr__(self):
-        return f'<User {self.id}>'
+        return f'<User {self.name}>'
 
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,7 +40,6 @@ class UserProgress(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'), nullable=True)
     is_correct = db.Column(db.Boolean, nullable=True)
-
 
 # Set the secret key for the application using the app.secret_key attribute
 app.secret_key = secrets.token_hex(16)
@@ -140,6 +139,13 @@ def login():
 
   # If the request method is GET, render the login template
   return render_template('login.html')
+
+# Define the route for the logout function
+@app.route('/logout')
+def logout():
+  # Remove the user id from the session and redirect to the landing page
+  session.pop('user_id', None)
+  return redirect(url_for('index'))
 
 # Define the route for the main page
 @app.route('/main')
