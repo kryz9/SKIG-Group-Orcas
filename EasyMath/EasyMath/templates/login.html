@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title -->
+  <title>EasyMath</title>
+
+  <!-- MDB 5 CDN links -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.9.0/mdb.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.9.0/mdb.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">PAUTAN LOG MASUK</a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Card -->
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header bg-dark text-white text-center">
+            <h3>Log Masuk</h3>
+          </div>
+          <!-- Card body -->
+          <div class="card-body">
+            <!-- Form -->
+            <form method="POST" action="/login">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="email" name="email" class="form-control" required />
+                <label class="form-label" for="email">Emel Anda</label>
+              </div>
+              <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" name="password" class="form-control" required />
+                  <label class="form-label" for="password">Kata Laluan</label>
+                </div>
+              <!-- Remember me checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="remember_me" name="remember_me" />
+                <label class="form-check-label" for="remember_me">
+                  Ingatkan Saya
+                </label>
+              </div>
+              <!-- Login button -->
+              <button type="submit" class="btn btn-dark btn-block mb-4">Log Masuk</button>
+              <!-- Message -->
+              {% if message %}
+              <div class="alert alert-danger" role="alert">
+                {{ message }}
+              </div>
+              {% endif %}
+            </form>
+          </div>
+          <!-- Card footer -->
+          <div class="card-footer bg-dark text-white text-center">
+            <p>Tiada Akaun? <a href="/signup">Daftar Sekarang</a></p>
+            <p>Lupa Kata Laluan? <a href="/forgot">Tekan sini</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-white">
+    <div class="container p-4">
+      <p class="mb-0">© 2024 EasyMath App. Hak Cipta Terpelihara.</p>
+    </div>
+  </footer>
+</body>
+</html>
