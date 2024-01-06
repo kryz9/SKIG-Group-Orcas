@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+import secrets
+import sqlite3
+
+from flask import Flask, render_template, request, session, redirect, url_for, send_from_directory, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-import secrets
 
 # Database configuration
 db_config = {
@@ -14,7 +16,7 @@ db_config = {
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////static/assets/db/User.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -22,8 +24,9 @@ db = SQLAlchemy(app)
 # Define your models (replace this with your actual models)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password = db.Column(db.String(128), nullable=False)
 
     def __repr__(self):
         return f'<User {self.id}>'
@@ -63,15 +66,111 @@ def get_current_user():
 #ROUTING PART
 @app.route('/')
 def index():
-    return render_template('index.html', error=None)
+    return render_template('landing-page.html', error=None)
+
+# Define the route for the sign up page
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+  # If the user is already logged in, redirect to the main page
+  if is_logged_in():
+    return redirect(url_for('main'))
+
+  # If the request method is POST, get the form data and validate it
+  if request.method == 'POST':
+    name = request.form.get('name')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    confirm = request.form.get('confirm')
+
+    # Check if the name, email, and password are not empty
+    if not name or not username or not password:
+      return render_template('signup.html', message='Sila isikan maklumat anda di ruangan kosong.')
+
+    # Check if the password and confirm password match
+    if password != confirm:
+      return render_template('signup.html', message='Kata lalua tidak padan.')
+
+    # Check if the email already exists in the database
+    user = User.query.filter_by(username=username).first()
+    if user:
+      return render_template('signup.html', message='Tahniah, akaun ada telah berjaya didaftarkan.')
+
+    # Create a new user object with the hashed password
+    user = User(name=name, username=username, password=generate_password_hash(password))
+
+    # Add the user to the database and commit the changes
+    db.session.add(user)
+    db.session.commit()
+
+    # Store the user id in the session and redirect to the main page
+    session['user_id'] = user.id
+    return redirect(url_for('main'))
+
+  # If the request method is GET, render the sign up template
+  return render_template('signup.html')
+
+# Define the route for the login page
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+  # If the user is already logged in, redirect to the main page
+  if is_logged_in():
+    return redirect(url_for('main'))
+
+  # If the request method is POST, get the form data and validate it
+  if request.method == 'POST':
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    # Check if the email and password are not empty
+    if not username or not password:
+      return render_template('login.html', message='Please fill in all the fields.')
+
+    # Check if the email exists in the database
+    user = User.query.filter_by(username=username).first()
+    if not user:
+      return render_template('login.html', message='Invalid email or password.')
+
+    # Check if the password matches the hashed password in the database
+    if not check_password_hash(user.password, password):
+      return render_template('login.html', message='Invalid email or password.')
+
+    # Store the user id in the session and redirect to the main page
+    session['user_id'] = user.id
+    return redirect(url_for('main'))
+
+  # If the request method is GET, render the login template
+  return render_template('login.html')
+
+# Define the route for the main page
+@app.route('/main')
+def main():
+  # If the user is not logged in, redirect to the login page
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  # Get the current user object and render the main template with the user data
+  user = get_current_user()
+  return render_template('index.html', user=user, error=None)
 
 @app.route('/calculator')
 def calculator():
-    return render_template('calculator.html', error=None)
+  # If the user is not logged in, redirect to the login page
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  # Get the current user object and render the main template with the user data
+  user = get_current_user()
+  return render_template('calculator.html', user=user, error=None)
 
 @app.route('/measurement')
 def measurement():
-    return render_template('measurement.html', error=None)
+  # If the user is not logged in, redirect to the login page
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  # Get the current user object and render the main template with the user data
+  user = get_current_user()
+  return render_template('measurement.html', user=user, error=None)
 
 @app.route('/exercisealgebraeasy1')
 def exercisealgebraeasy1():
@@ -97,7 +196,7 @@ def save_progress():
     db.session.add(progress)
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('main'))
 
 if __name__ == '__main__':
     app.run(debug=True)
