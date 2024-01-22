@@ -30,7 +30,8 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#nota">Nota</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#latihan">Latihan</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#progres">Progres</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/profile">Profail</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/profile">Profil</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/chat">Chat</a></li>
 <li class="nav-item mx-0 mx-lg-1">
     <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">
         <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
@@ -116,6 +117,7 @@
                         <img class="img-fluid rounded" src="../static/assets/img/algebra.png" alt="..." />
                     </div>
                 </div>
+
                 <!-- About Box 2 -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
@@ -144,18 +146,6 @@
                     <div class="divider-custom-line"></div>
                 </div>
 
-                <!-- Contact Section Form-->
-                <div id="chat-container">
-        <div id="messages-container">
-            <div id="messages"></div>
-        </div>
-        <div id="bottom-box">
-            <div id="input-container">
-                <input type="text" id="message-input" placeholder="Type your message...">
-                <button id="send-btn" onclick="sendMessage()">Send</button>
-            </div>
-        </div>
-    </div>
             </div>
         </section>
 
@@ -171,7 +161,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Note Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Darab & Bahagi</h2>
+                                    <h2 class="portfolio-modal-title text-uppercase mb-0">Darab & Bahagi</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -407,7 +397,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Darab dan Bahagi</h2>
+                            <h2 class="portfolio-modal-title text-secondary mb-0">Darab dan Bahagi</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
@@ -425,23 +415,23 @@
                             <div class="container">
     <div class="row flex-wrap">
     <div class="col-lg-6 mb-5 mb-lg-0">
-        <a href="{{ url_for('exercisealgebraeasy1') }}"> <!-- Update the href attribute to the desired page URL -->
+        <a href="{{ url_for('multiplygame') }}"> <!-- Update the href attribute to the desired page URL -->
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/easy.png" alt="..." style="width: 80%; max-height: 200px;">
+                <img class="img-fluid rounded" src="../static/assets/img/multiplication.png" alt="..." style="width: 80%; max-height: 200px;" href="/multiplygame">
             </div>
         </a>
     </div>
 
     <div class="col-lg-6 mb-5 mb-lg-0">
-        <a href="/medium-page"> <!-- Update the href attribute to the desired page URL -->
+        <a href=href="{{ url_for('divisiongame') }}"> <!-- Update the href attribute to the desired page URL -->
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/medium.png" alt="..." style="width: 80%; max-height: 200px;">
+                <img class="img-fluid rounded" src="../static/assets/img/division.png" alt="..." style="width: 80%; max-height: 200px;" href="/divisiongame">
             </div>
         </a>
     </div>
@@ -458,8 +448,6 @@
     </div>
 </div>
 </div>
-
-
                                 <!-- You can customize the button text and style here -->
                                 <button class="btn btn-primary" data-bs-dismiss="modal">
                                     <i class="fas fa-xmark fa-fw"></i>
@@ -523,9 +511,9 @@
     </div>
 </div>
 
-        <div id="flash-icon" class="flash-icon" onclick="goToChat()">
-    <img src="../static/assets/img/chat.png" alt="Chat Icon">
-</div>
+<div id="chat-button" onclick="goToChat()">
+    <img src="../static/assets/img/chat.png" alt="Chat Button">
+  </div>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -541,10 +529,9 @@
         window.location.href = '/measurement';
     }
 
-     function goToChat() {
-    window.location.href = '/chat';
+    function goToChat() {
+      window.location.href = '/chat.html';
     }
-
 
     var socket = io.connect('http://' + document.domain + ':' + location.port);
 

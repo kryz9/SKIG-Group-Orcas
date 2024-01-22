@@ -157,6 +157,7 @@ def login():
 
     # Store the user id in the session and redirect to the main page
     session['user_id'] = user.id
+    session['name'] = user.name
     return redirect(url_for('main'))
 
   # If the request method is GET, render the login template
@@ -259,13 +260,13 @@ def measurement():
   user = get_current_user()
   return render_template('measurement.html', user=user, error=None)
 
-@app.route('/exercisealgebraeasy1')
-def exercisealgebraeasy1():
-    return render_template('exercisealgebraeasy1.html', error=None)
+@app.route('/divisiongame')
+def divisiongame():
+    return render_template('divide-game/templates/division-game.html', error=None)
 
-@app.route('/exercisealgebraeasy2')
-def exercisealgebraeasy2():
-    return render_template('exercisealgebraeasy2.html', error=None)
+@app.route('/multiplygame')
+def multiplygame():
+    return render_template('multiply-game/multiply-game.html', error=None)
 
 @app.route('/exercisealgebraeasy3')
 def exercisealgebraeasy3():
@@ -287,17 +288,17 @@ def save_progress():
 
 @app.route('/chat')
 def chat():
-    if 'user' not in session:
+    if 'user_id' not in session:
         return redirect(url_for('login'))
 
-    elif 'user' in session:
-        return render_template('chat.html', user=session['user'])
+    user = get_current_user()
+    return render_template('chat.html', user=user)
 
 @socketio.on('message')
 def handle_message(msg):
-    user = session.get('username', 'Guest')
+    user = session.get('name', 'Guest')
     color = generate_random_color()
-    emit('message', {'username': user, 'message': msg, 'color': color}, broadcast=True)
+    emit('message', {'name': user, 'message': msg, 'color': color}, broadcast=True)
 
 def generate_random_color():
     return "#{:06x}".format(random.randint(0, 0xFFFFFF))
