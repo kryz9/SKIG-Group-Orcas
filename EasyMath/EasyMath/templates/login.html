@@ -24,106 +24,64 @@
     rel="stylesheet"
   />
 
+  <style>
+    body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../static/assets/img/login-bg.png') center/cover no-repeat; /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
+}
+
+    .btn-custom {
+  width: 200px; /* Adjust the width as needed */
+  background-color: rgba(138, 74, 28, 0.70); /* Change the background color to your preferred color */
+  color: white; /* Set the text color to contrast with the background */
+  margin: 0 auto; /* Center the button horizontally */
+  display: block; /* Make the button a block element to take full width of its container */
+}
+
+  </style>
 </head>
 <body>
 
-  <!-- Navigation bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">PAUTAN LOG MASUK</a>
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
-
   <!-- Card -->
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-header bg-dark text-white text-center">
-            <h3>Log Masuk</h3>
-          </div>
-          <!-- Card body -->
-          <div class="card-body">
-            <!-- Form -->
-            <form method="POST" action="/login">
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="email" name="email" class="form-control" required />
-                <label class="form-label" for="email">Emel Anda</label>
-              </div>
-              <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="password" name="password" class="form-control" required />
-                  <label class="form-label" for="password">Kata Laluan</label>
-                </div>
-              <!-- Remember me checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="remember_me" name="remember_me" />
-                <label class="form-check-label" for="remember_me">
-                  Ingatkan Saya
-                </label>
-              </div>
-              <!-- Login button -->
-              <button type="submit" class="btn btn-dark btn-block mb-4">Log Masuk</button>
-              <!-- Message -->
-              {% if message %}
-              <div class="alert alert-danger" role="alert">
-                {{ message }}
-              </div>
-              {% endif %}
-            </form>
-          </div>
-          <!-- Card footer -->
-          <div class="card-footer bg-dark text-white text-center">
-            <p>Tiada Akaun? <a href="/signup">Daftar Sekarang</a></p>
-            <p>Lupa Kata Laluan? <a href="/forgot">Tekan sini</a></p>
-          </div>
-        </div>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+          <!-- Form -->
+          <form method="POST" action="/login">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="email" name="email" class="form-control" required />
+              <label class="form-label" for="email">Emel Anda</label>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="password" name="password" class="form-control" required />
+              <label class="form-label" for="password">Kata Laluan</label>
+            </div>
+            <!-- Login button -->
+            <button type="submit" class="btn btn-custom btn-block mb-4">Log Masuk</button>
+            <!-- Message -->
+            {% if message %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            {% endif %}
+          </form>
+
+        <!-- Card footer -->
+        <div class="text-center" style="color: black;">
+    <p>Tiada Akaun? <a href="/signup" style="color: rgba(138,74,28,0.85);">Daftar Sekarang</a></p>
+</div>
+
       </div>
     </div>
   </div>
+</div>
 
-          <!-- Footer-->
-          <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Lokasi</h4>
-                        <p class="lead mb-0">
-                            Universiti Utara Malaysia
-                            <br />
-                            Sintokyo, Kedah
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Aplikasi lain</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Nota Tambahan</h4>
-                        <p class="lead mb-0">
-                            Dapatkan nota tambahan anda di sini<br>
-                            <a href="http://www.matematik123.cikgunaza.com/2011/12/pendaraban-dan-pembahagian-integer.html">Nota Pendaraban dan Pembahagian<br></a>
-                            <a href="http://mathtingkatan1.weebly.com/bab-8-ukuran-asas.html">Nota Pengukuran Asas</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; 2024 EasyMath. Hak Cipta Terpelihara.</small></div>
-        </div>
 
   <!-- MDB -->
   <script
@@ -131,5 +89,29 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
   ></script>
 
+  <!-- Custom JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+
+      emailInput.addEventListener('input', function() {
+        toggleLabelVisibility(emailInput);
+      });
+
+      passwordInput.addEventListener('input', function() {
+        toggleLabelVisibility(passwordInput);
+      });
+
+      function toggleLabelVisibility(inputElement) {
+        const label = inputElement.nextElementSibling;
+        if (inputElement.value.trim() !== '') {
+          label.style.display = 'none';
+        } else {
+          label.style.display = 'block';
+        }
+      }
+    });
+  </script>
 </body>
 </html>

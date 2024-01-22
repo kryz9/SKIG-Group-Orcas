@@ -91,6 +91,43 @@
   }
 }
 
+#chat-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #messages-container {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        #messages {
+            margin-bottom: 10px;
+        }
+
+        #input-container {
+            display: flex;
+        }
+
+        #message-input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        #send-btn {
+            cursor: pointer;
+        }
+
+        #bottom-box {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -118,6 +155,10 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   line-height: 1.2;
+}
+
+h2.mb-01{
+color: rgba(138, 74, 28, 0.59);
 }
 
 h1, .h1 {
@@ -3683,7 +3724,7 @@ textarea.form-control-lg {
 .nav-pills {
   --bs-nav-pills-border-radius: 0.5rem;
   --bs-nav-pills-link-active-color: #fff;
-  --bs-nav-pills-link-active-bg: #1abc9c;
+  --bs-nav-pills-link-active-bg: rgba(65, 27, 0, 0.66);
 }
 .nav-pills .nav-link {
   background: none;
@@ -8127,12 +8168,17 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-image: url('../assets/img/bg-1.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  background-color: transparent !important; /* Set background-color to transparent to ensure the image is visible */
 }
+
 
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #af5514 !important; /* Red color as an example, replace with your desired color */
 }
 
 .bg-success {
@@ -10833,14 +10879,18 @@ html {
 .page-section {
   padding: 6rem 0;
 }
-.page-section .page-section-heading {
+
+.page-section .page-section-heading1 {
   font-size: 2.25rem;
   line-height: 2rem;
+  color: #8a4a1c;
 }
+
 @media (min-width: 992px) {
   .page-section .page-section-heading {
     font-size: 3rem;
     line-height: 2.5rem;
+    color: #8a4a1c;
   }
 }
 
@@ -10851,14 +10901,26 @@ html {
   justify-content: center;
   align-items: center;
 }
+
+
 .divider-custom .divider-custom-line {
   width: 100%;
   max-width: 7rem;
   height: 0.25rem;
-  background-color: #2c3e50;
+  background-color: #8a4a1c;
   border-radius: 1rem;
-  border-color: #2c3e50;
+  border-color: #8a4a1c;
 }
+
+.divider-custom .divider-custom-line1 {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border-color: #ffffff;
+}
+
 .divider-custom .divider-custom-line:first-child {
   margin-right: 1rem;
 }
@@ -10866,11 +10928,21 @@ html {
   margin-left: 1rem;
 }
 .divider-custom .divider-custom-icon {
-  color: #2c3e50;
+  color: #8a4a1c;
   font-size: 2rem;
 }
+
+.divider-custom .divider-custom-icon2 {
+  color: #ffffff;
+  font-size: 2rem;
+}
+
 .divider-custom.divider-light .divider-custom-line {
-  background-color: #fff;
+  background-color: #8a4a1c;
+}
+
+.divider-custom.divider-light .divider-custom-line2{
+  background-color: #ffffff;
 }
 .divider-custom.divider-light .divider-custom-icon {
   color: #fff;
@@ -10970,17 +11042,22 @@ html {
 .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
+  background-color: #ffffff; /* Replace with your desired color code */
 }
+
 .masthead .masthead-heading {
-  font-size: 2.75rem;
+  font-size: 2rem;
   line-height: 2.75rem;
 }
+
 .masthead .masthead-subheading {
   font-size: 1.25rem;
 }
+
 .masthead .masthead-avatar {
   width: 15rem;
 }
+
 
 @media (min-width: 992px) {
   .masthead {
@@ -10988,7 +11065,7 @@ html {
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 3.5rem;
   }
   .masthead .masthead-subheading {
@@ -11019,7 +11096,7 @@ html {
 }
 
 .portfolio-modal .btn-close {
-  color: #1abc9c;
+  color: #ffffff;
   font-size: 2rem;
   padding: 1rem;
 }
@@ -11050,6 +11127,15 @@ html {
   box-sizing: border-box;
 }
 
+.custom-bg-style {
+    --bs-bg-opacity: 1;
+  background-image: url('../assets/img/bg-3.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  background-color: transparent !important; /* Set background-color to transparent to ensure the image is visible */
+}
+
 .nota{
   display: flex;
   overflow-x:scroll;
@@ -11067,4 +11153,29 @@ html {
   padding: 24px;
   border-radius: 8px;
   scroll-snap-align: start;
+}
+
+.pagetitle{
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+  line-height: 1.2;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.flash-icon {
+    position: fixed;
+    bottom: 3px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.flash-icon img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
