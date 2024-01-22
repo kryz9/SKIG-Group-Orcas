@@ -11124,3 +11124,16 @@ html {
   border-radius: 8px;
   scroll-snap-align: start;
 }
+
+.pagetitle{
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+  font-family: "Nunito", sans-serif;
+  line-height: 1.2;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
