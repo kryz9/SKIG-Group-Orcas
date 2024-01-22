@@ -1,17 +1,17 @@
 import secrets
 import os
-
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_socketio import SocketIO, emit
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
-import mysql.connector
+
+from Chat.app import socketio
 
 # Database configuration
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '1234',
     'database': 'math'
 }
 
@@ -44,10 +44,60 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    photo = db.Column(db.String(100), nullable=True)
+    # photo = db.Column(db.String(100), nullable=True)
+
+
 
     def __repr__(self):
         return f'<User {self.name}>'
+
+
+# Define the route for the chat page
+@app.route('/chat')
+def chat():
+    # If the user is not logged in, redirect to the login page
+    if not is_logged_in():
+        return redirect(url_for('login'))
+
+    # Get the current user object
+    user = get_current_user()
+    return render_template('chat.html', user=user)
+
+
+
+# Chat model
+class ChatMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), nullable=False)
+    message = db.Column(db.String(255), nullable=False)
+    color = db.Column(db.String(7), nullable=True)
+
+# Handle chat events
+@socketio.on('message')
+def handle_message(msg):
+    username = session.get('username', 'Guest')
+    color = generate_random_color()
+
+    # Save the chat message to the database
+    chat_message = ChatMessage(username=username, message=msg, color=color)
+    db.session.add(chat_message)
+    db.session.commit()
+
+    emit('message', {'username': username, 'message': msg, 'color': color}, broadcast=True)
+
+
+# Handle chat events
+@socketio.on('message')
+def handle_message(msg):
+    username = session.get('username', 'Guest')
+    color = generate_random_color()
+
+    # Save the chat message to the database
+    chat_message = ChatMessage(username=username, message=msg, color=color)
+    db.session.add(chat_message)
+    db.session.commit()
+
+    emit('message', {'username': username, 'message': msg, 'color': color}, broadcast=True)
 
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -178,6 +228,10 @@ def main():
   user = get_current_user()
   return render_template('index.html', user=user, error=None)
 
+@app.route('/profile')
+def profile():
+    user = get_current_user()
+    return render_template("profile.html", user=user, error=None)
 
 
 @app.route('/calculator')
