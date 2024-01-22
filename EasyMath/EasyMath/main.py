@@ -12,7 +12,7 @@ from Chat.app import socketio
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '1234',
     'database': 'math'
 }
 
@@ -45,7 +45,7 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    photo = db.Column(db.String(100), nullable=True)
+    # photo = db.Column(db.String(100), nullable=True)
 
     def __repr__(self):
         return f'<User {self.name}>'

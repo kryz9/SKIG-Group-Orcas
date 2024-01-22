@@ -157,6 +157,10 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
+h2.mb-01{
+color: rgba(138, 74, 28, 0.59);
+}
+
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
@@ -10878,6 +10882,13 @@ html {
 .page-section .page-section-heading {
   font-size: 2.25rem;
   line-height: 2rem;
+  font-color: #8a4a1c;
+}
+
+.page-section .page-section-heading1 {
+  font-size: 2.25rem;
+  line-height: 2rem;
+  color: #8a4a1c;
 }
 @media (min-width: 992px) {
   .page-section .page-section-heading {
@@ -10897,9 +10908,9 @@ html {
   width: 100%;
   max-width: 7rem;
   height: 0.25rem;
-  background-color: #2c3e50;
+  background-color: #8a4a1c;
   border-radius: 1rem;
-  border-color: #2c3e50;
+  border-color: #8a4a1c;
 }
 .divider-custom .divider-custom-line:first-child {
   margin-right: 1rem;
@@ -10908,11 +10919,11 @@ html {
   margin-left: 1rem;
 }
 .divider-custom .divider-custom-icon {
-  color: #2c3e50;
+  color: #8a4a1c;
   font-size: 2rem;
 }
 .divider-custom.divider-light .divider-custom-line {
-  background-color: #fff;
+  background-color: #8a4a1c;
 }
 .divider-custom.divider-light .divider-custom-icon {
   color: #fff;
@@ -11099,7 +11110,7 @@ html {
 
 .custom-bg-style {
     --bs-bg-opacity: 1;
-  background-image: url('path/to/your/image.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-image: url('../assets/img/bg-3.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   background-repeat: no-repeat; /* Adjust as needed */
