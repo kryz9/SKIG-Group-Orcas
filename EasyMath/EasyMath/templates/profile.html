@@ -2,20 +2,41 @@
 <html lang="en">
 
 <head>
-  <!-- ... (your existing head content) ... -->
-  <style>
-    .main {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-    }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    .container {
-      width: 100%;
-      align-items: center;
-    }
-  </style>
+  <title>EasyMath - Profil</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/css/profile/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/static/css/profile/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/css/profile/style.css" rel="stylesheet">
+  <link href="../static/css/styles.css" rel="stylesheet" />
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Jan 09 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
@@ -26,135 +47,177 @@
     <div class="container">
       <a class="navbar-brand" href="#page-top">EasyMath</a>
       <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+          Menu
+          <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/home">Halaman Utama</a></li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">Log Keluar</a></li>
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/home">Halaman Utama</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">Log Keluar</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
   <!-- End Header -->
 
   <!-- Start Page Title -->
   <main id="main" class="main">
-    <div class="container">
 
-      <div class="pagetitle">
-        <h1><br>Profile</h1>
-      </div><!-- End Page Title -->
+    <div class="pagetitle">
+      <h1><br>Profile</h1>
+    </div><!-- End Page Title -->
 
-      <section class="section profile">
-        <div class="row">
-          <div class="col-xl-4">
-  <div class="card">
-    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-      <div class="profile-picture">
-        <img src="../static/assets/img/algebra.png" alt="Profile Picture">
-      </div>
-      <h2>{{ user.name }}</h2>
-    </div>
-  </div>
-</div>
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
 
-          <div class="col-xl-8">
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              <!-- Username -->
+              <h2> {{ user.name }} </h2>
+            </div>
+          </div>
+        </div>
 
-            <div class="card">
-              <div class="card-body pt-3">
-                <!-- Bordered Tabs -->
-                <ul class="nav nav-tabs nav-tabs-bordered">
-                  <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
-                  </li>
-                </ul>
-                <div class="tab-content pt-2">
-                  <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                    <!-- Profile Edit Form -->
-                    <form method="POST" action="{{ url_for('edit_profile') }}">
-                      <div class="row mb-3">
-                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <!-- Profile Edit Form -->
+                  <form method="POST" action="{{ url_for('edit_profile') }}">
+                    <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                      <div class="col-md-8 col-lg-9">
+                        <img src="../static/assets/img/avataaars.svg" alt="..." class="rounded-circle">
+                          <div class="pt-2">
+                            <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="full_name" type="text" class="form-control" id="fullName" value="{{ user.name }}" >
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="full_name" type="text" class="form-control" id="fullName" value="{{ user.name }}">
+                          <input name="email" type="email" class="form-control" id="Email" value="{{ user.email }}" >
                         </div>
-                      </div>
+                    </div>
 
-                      <div class="row mb-3">
-                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="email" type="email" class="form-control" id="Email" value="{{ user.email }}">
-                        </div>
-                      </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form>
+                  <!-- End Profile Edit Form -->
 
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                      </div>
-                    </form>
-                    <!-- End Profile Edit Form -->
-
-                    <!-- Flash Messages -->
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
+                  <!-- Flash Messages -->
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
                     <ul class="flash-messages">
-                      {% for message in messages %}
-                      <li>{{ message }}</li>
-                      {% endfor %}
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
                     </ul>
-                    {% endif %}
-                    {% endwith %}
+                  {% endif %}
+                  {% endwith %}
 
-                    <!-- Change Password Form -->
-                    <form method="POST" action="{{ url_for('profile') }}">
-                      <!-- Current Password -->
-                      <div class="row mb-3">
-                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                  <!-- Change Password Form -->
+                  <form method="POST" action="{{ url_for('profile') }}">
+                    <!-- Current Password -->
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="current_password" type="password" class="form-control" id="currentPassword" required>
                         </div>
-                      </div>
-
-                      <!-- New Password -->
-                      <div class="row mb-3">
-                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                    </div>
+  
+                    <!-- New Password -->
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="new_password" type="password" class="form-control" id="newPassword" required>
                         </div>
-                      </div>
-
-                      <!-- Re-enter New Password -->
-                      <div class="row mb-3">
-                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                    </div>
+  
+                    <!-- Re-enter New Password -->
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="renew_password" type="password" class="form-control" id="renewPassword" required>
                         </div>
-                      </div>
+                    </div>
+  
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </form>
+                  <!-- End Change Password Form -->
 
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Change Password</button>
-                      </div>
-                    </form>
-                    <!-- End Change Password Form -->
-
-                  </div><!-- End Bordered Tabs -->
-
-                </div>
-              </div>
+              </div><!-- End Bordered Tabs -->
 
             </div>
-
           </div>
+
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
   </main><!-- End #main -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- ======= Footer ======= -->
+  <footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <!-- Footer Location-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Lokasi</h4>
+                <p class="lead mb-0">
+                    Universiti Utara Malaysia
+                    <br />
+                    Sintokyo, Kedah
+                </p>
+            </div>
+            <!-- Footer About Text-->
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4">Nota Tambahan</h4>
+                <p class="lead mb-0">
+                    Dapatkan nota tambahan anda di sini<br>
+                    <a href="http://www.matematik123.cikgunaza.com/2011/12/pendaraban-dan-pembahagian-integer.html">Nota Pendaraban dan Pembahagian<br></a>
+                    <a href="http://mathtingkatan1.weebly.com/bab-8-ukuran-asas.html">Nota Pengukuran Asas</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
+  <!-- Copyright Section-->
+  <div class="copyright py-4 text-center text-white">
+    <div class="container"><small>Copyright &copy; 2024 EasyMath. Hak Cipta Terpelihara.</small></div>
+  </div>
+
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   <script src="/static/css/profile/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="/static/css/profile/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
