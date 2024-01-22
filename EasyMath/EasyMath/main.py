@@ -290,7 +290,9 @@ def save_progress():
 def chat():
     if 'user' not in session:
         return redirect(url_for('login'))
-    return render_template('chat.html', user=session['user'])
+
+    elif 'user' in session:
+        return render_template('chat.html', user=session['user'])
 
 @socketio.on('message')
 def handle_message(msg):
