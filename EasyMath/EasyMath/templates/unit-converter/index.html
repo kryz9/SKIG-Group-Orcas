@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-MW7anwJXTd0udhOuGxjLW7aIXt0fDYZ7LL4O4s/wKjYzZQsE4GrFyogvRKJrPQyvj2NfjXGZuv1mk8JN/6+VA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Unit Converter</title>
+  </head>
+
+  <body>
+
+    <div class="converter-wrapper">
+      <!-- <h1>UNIT CONVERTER</h1> -->
+
+      <form name="property_form">
+        <span>
+          <select
+            class="select-property"
+            name="the_menu"
+            size="1"
+            onchange="UpdateUnitMenu(this, document.form_A.unit_menu); UpdateUnitMenu(this, document.form_B.unit_menu)"
+          ></select>
+        </span>
+      </form>
+
+      <div class="converter-side-a">
+        <h3>Dari Unit</h3>
+        <form name="form_A" onsubmit="return false">
+          <input
+            type="text"
+            class="numbersonly"
+            name="unit_input"
+            maxlength="20"
+            value="0"
+            onkeyup="CalculateUnit(document.form_A, document.form_B)"
+          />
+          <span>
+            <select
+              name="unit_menu"
+              onchange="CalculateUnit(document.form_B, document.form_A)"
+            ></select>
+          </span>
+        </form>
+      </div>
+
+      <div class="converter-equals">
+        <p></p>
+      </div>
+
+      <div class="converter-side-b">
+        <h3>Ke Unit</h3>
+        <form name="form_B" onsubmit="return false">
+          <input
+            type="text"
+            class="numbersonly"
+            name="unit_input"
+            maxlength="20"
+            value="0"
+            onkeyup="CalculateUnit(document.form_B, document.form_A)"
+          />
+          <span>
+            <select
+              name="unit_menu"
+              onchange="CalculateUnit(document.form_A, document.form_B)"
+            ></select>
+          </span>
+        </form>
+      </div>
+    </div>
+
+<script src="main.js"></script>
+
+</html>

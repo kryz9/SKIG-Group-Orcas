@@ -11,9 +11,10 @@ import random
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '1234',
+    'password': '',
     'database': 'math'
 }
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
