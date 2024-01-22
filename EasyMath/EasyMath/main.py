@@ -1,7 +1,7 @@
 import secrets
 import os
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -11,13 +11,10 @@ import mysql.connector
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
-    'database': 'math'
 }
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_config['user']}:{db_config['password']}@{db_config['host']}/{db_config['database']}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -79,14 +76,62 @@ def get_current_user():
   if is_logged_in():
     return User.query.get(session['user_id'])
 
-
 #ROUTING PART
 # Define the route for the landing page
 @app.route('/')
 def index():
   return render_template('landing-page.html')
 
-# Define the route for the sign up page
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    # Assuming you have a function to get the current user
+    current_user = get_current_user()
+
+    if request.method == 'POST':
+        current_password = request.form.get('current_password')
+        new_password = request.form.get('new_password')
+        renew_password = request.form.get('renew_password')
+
+        # Check if the current password matches the one in the database
+        if not check_password_hash(current_user.password, current_password):
+            flash('Current password is incorrect', 'error')
+            return redirect(url_for('profile'))
+
+        # Check if the new password and re-entered new password match
+        if new_password != renew_password:
+            flash('New passwords do not match', 'error')
+            return redirect(url_for('profile'))
+
+        # Update the user's password in the database
+        current_user.password = generate_password_hash(new_password)
+        db.session.commit()
+
+        flash('Password changed successfully', 'success')
+
+    return render_template('profile.html', user=current_user)
+  
+@app.route('/edit_profile', methods=['GET', 'POST'])
+def edit_profile():
+    current_user = get_current_user()
+
+    if request.method == 'POST':
+        new_full_name = request.form.get('full_name')
+        new_email = request.form.get('email')
+
+        print(f"new_full_name: {new_full_name}")
+        print(f"new_email: {new_email}")
+
+        if new_full_name is not None and new_email is not None:
+            # Update user information in the database
+            current_user.name = new_full_name
+            current_user.email = new_email
+            db.session.commit()
+
+            flash('User information updated successfully', 'success')
+
+    return render_template('profile.html', user=current_user)
+
+
 # Define the route for the sign up page
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -160,6 +205,28 @@ def login():
   # If the request method is GET, render the login template
   return render_template('login.html')
 
+# Define the route for the profil function
+@app.route('/profil')
+def profil():
+  # If the user is not logged in, redirect to the login page
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  # Get the current user object and render the main template with the user data
+  user = get_current_user()
+  return render_template('profile.html', user=user, error=None)
+
+# Define the route for the profil function
+@app.route('/home')
+def home():
+  # If the user is not logged in, redirect to the login page
+  if not is_logged_in():
+    return redirect(url_for('login'))
+
+  # Get the current user object and render the main template with the user data
+  user = get_current_user()
+  return render_template('index.html', user=user, error=None)
+
 # Define the route for the logout function
 @app.route('/logout')
 def logout():
@@ -177,8 +244,6 @@ def main():
   # Get the current user object and render the main template with the user data
   user = get_current_user()
   return render_template('index.html', user=user, error=None)
-
-
 
 @app.route('/calculator')
 def calculator():
