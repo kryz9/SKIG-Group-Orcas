@@ -3724,7 +3724,7 @@ textarea.form-control-lg {
 .nav-pills {
   --bs-nav-pills-border-radius: 0.5rem;
   --bs-nav-pills-link-active-color: #fff;
-  --bs-nav-pills-link-active-bg: #1abc9c;
+  --bs-nav-pills-link-active-bg: rgba(65, 27, 0, 0.66);
 }
 .nav-pills .nav-link {
   background: none;
@@ -8178,7 +8178,7 @@ textarea.form-control-lg {
 
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #af5514 !important; /* Red color as an example, replace with your desired color */
 }
 
 .bg-success {
@@ -10879,21 +10879,18 @@ html {
 .page-section {
   padding: 6rem 0;
 }
-.page-section .page-section-heading {
-  font-size: 2.25rem;
-  line-height: 2rem;
-  font-color: #8a4a1c;
-}
 
 .page-section .page-section-heading1 {
   font-size: 2.25rem;
   line-height: 2rem;
   color: #8a4a1c;
 }
+
 @media (min-width: 992px) {
   .page-section .page-section-heading {
     font-size: 3rem;
     line-height: 2.5rem;
+    color: #8a4a1c;
   }
 }
 
@@ -10904,6 +10901,8 @@ html {
   justify-content: center;
   align-items: center;
 }
+
+
 .divider-custom .divider-custom-line {
   width: 100%;
   max-width: 7rem;
@@ -10912,6 +10911,16 @@ html {
   border-radius: 1rem;
   border-color: #8a4a1c;
 }
+
+.divider-custom .divider-custom-line1 {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border-color: #ffffff;
+}
+
 .divider-custom .divider-custom-line:first-child {
   margin-right: 1rem;
 }
@@ -10922,8 +10931,18 @@ html {
   color: #8a4a1c;
   font-size: 2rem;
 }
+
+.divider-custom .divider-custom-icon2 {
+  color: #ffffff;
+  font-size: 2rem;
+}
+
 .divider-custom.divider-light .divider-custom-line {
   background-color: #8a4a1c;
+}
+
+.divider-custom.divider-light .divider-custom-line2{
+  background-color: #ffffff;
 }
 .divider-custom.divider-light .divider-custom-icon {
   color: #fff;
@@ -11147,4 +11166,16 @@ html {
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+.flash-icon {
+    position: fixed;
+    bottom: 3px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.flash-icon img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }

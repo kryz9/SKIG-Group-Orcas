@@ -4,15 +4,14 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
-import mysql.connector
-#from Chat.app import socketio
+from flask_socketio import SocketIO, emit
+import random
 
 # Database configuration
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '1234',
     'database': 'math'
 }
 
@@ -21,7 +20,10 @@ app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_config['user']}:{db_config['password']}@{db_config['host']}/{db_config['database']}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+socketio = SocketIO(app)
 db = SQLAlchemy(app)
+
+users = {}
 
 # Define the path to the uploads folder
 UPLOAD_FOLDER = os.path.join('../static/assets/upload')
@@ -87,7 +89,6 @@ def get_current_user():
 def index():
   return render_template('landing-page.html')
 
-# Define the route for the sign up page
 # Define the route for the sign up page
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -284,5 +285,20 @@ def save_progress():
 
     return redirect(url_for('main'))
 
+@app.route('/chat')
+def chat():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return render_template('chat.html', user=session['user'])
+
+@socketio.on('message')
+def handle_message(msg):
+    user = session.get('username', 'Guest')
+    color = generate_random_color()
+    emit('message', {'username': user, 'message': msg, 'color': color}, broadcast=True)
+
+def generate_random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=False, allow_unsafe_werkzeug=True)
