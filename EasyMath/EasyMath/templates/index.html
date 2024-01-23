@@ -47,7 +47,11 @@
         <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="../static/assets/img/avataaars.svg" alt="..." />
+        {% if user.photo %}
+            <img class="masthead-avatar mb-5" src="{{ user.photo }}" alt="Profile photo" />
+        {% else %}
+            <img class="masthead-avatar mb-5" src="../static/assets/img/avataaars.svg" alt="Profile photo" />
+        {% endif %}
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang {{ user.name }}<br>Mari Kita Belajar</h1>
         <!-- Icon Divider-->
