@@ -144,12 +144,23 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="../static/assets/img/avataaars.svg" alt="..." class="rounded-circle">
-                          <div class="pt-2">
-                            <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                            <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        <form method="POST" action="/update_profile_picture" enctype="multipart/form-data">
+                          {% if user.photo %}
+                          <img src="{{ user.photo }}" class="rounded-circle" alt="..." class="rounded-circle" width="200" height="200">
+                            <div class="pt-2">
+                              <a type="submit" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                              <a href="/delete_profile_picture" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                            </div>
+                          {% else %}
+                          <img src="../static/assets/img/avataaars.svg" alt="..." class="rounded-circle" width="200" height="200">
+                            <input type="file" name="profile_picture" accept="image/*">
+                            <div class="pt-2">
+                              <a type="submit" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                              <a href="/delete_profile_picture" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                            </div>
+                          {% endif %}
+                        </form>
                           </div>
-                      </div>
                     </div>
 
                     <div class="row mb-3">
