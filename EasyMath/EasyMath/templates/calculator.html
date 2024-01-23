@@ -1,64 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>EasyMath</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../static/assets/img/calc.png'); /* Replace 'your-background-image-url.jpg' with the URL of your image */
+            background-size: cover;
         }
 
         input {
-            width: 50px;
+            width: 300px;
+            height: 30px;
             text-align: center;
             font-size: 18px;
             margin: 5px;
+            background-color: #f6e1dd;
         }
 
         button {
+            width: 80px;
             font-size: 16px;
             margin: 5px;
             padding: 10px;
             cursor: pointer;
+            background-color: #f6e1dd; /* Adjust the background color */
+
         }
+
+        /* Style for '*' and '/' buttons */
+        .operator {
+            width: 128px; /* Adjust the width */
+            background-color: #f37e5b; /* Adjust the background color */
+            color: #000000; /* Adjust the text color */
+        }
+
+        .operator2 {
+            width: 128px; /* Adjust the width */
+            background-image: url("../static/assets/img/bahagi.png"); /* Adjust the background color */
+            background-size: cover;
+            background-position: center center;
+            color: #000000; /* Adjust the text color */
+        }
+
+        .btn {
+            width: 80px; /* Adjust the width */
+            background-color: #f37e5b; /* Adjust the background color */
+            color: #000000; /* Adjust the text color */
+        }
+
+        .result {
+            width: 270px; /* Adjust the width */
+            background-color: rgba(114, 60, 43, 0.78); /* Adjust the background color */
+            color: #000000; /* Adjust the text color */
+        }
+
+        /* Style for the additional button */
+        .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/back.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <h1>Kids Calculators</h1>
+    <h1> </h1>
+    <h1> </h1>
+    <h1> </h1>
 
     <input type="text" id="result" disabled>
 
-    <br>
+    <div class="row1">
+        <button onclick="operate(' X ')" class="operator">X</button>
+        <button onclick="operate(' / ')" class="operator2">/</button>
+    </div>
 
-    <button onclick="appendToResult('1')">1</button>
-    <button onclick="appendToResult('2')">2</button>
-    <button onclick="appendToResult('3')">3</button>
-    <button onclick="operate('+')">+</button>
+    <div class="row1">
+        <button onclick="appendToResult('7')">7</button>
+        <button onclick="appendToResult('8')">8</button>
+        <button onclick="appendToResult('9')">9</button>
+    </div>
 
-    <br>
+    <div class="row1">
+        <button onclick="appendToResult('4')">4</button>
+        <button onclick="appendToResult('5')">5</button>
+        <button onclick="appendToResult('6')">6</button>
+    </div>
 
-    <button onclick="appendToResult('4')">4</button>
-    <button onclick="appendToResult('5')">5</button>
-    <button onclick="appendToResult('6')">6</button>
-    <button onclick="operate('-')">-</button>
+    <div class="row1">
+        <button onclick="appendToResult('1')">1</button>
+        <button onclick="appendToResult('2')">2</button>
+        <button onclick="appendToResult('3')">3</button>
+    </div>
 
-    <br>
+    <div class="row1">
+        <button onclick="clearResult()" class="btn">C</button>
+        <button onclick="appendToResult('0')">0</button>
+        <button onclick="deleteLast()" class="btn">DEL</button>
+    </div>
 
-    <button onclick="appendToResult('7')">7</button>
-    <button onclick="appendToResult('8')">8</button>
-    <button onclick="appendToResult('9')">9</button>
-    <button onclick="operate('*')">*</button>
+    <div class="row1">
+        <button onclick="calculateResult()" class="result">=</button>
+    </div>
 
-    <br>
-
-    <button onclick="appendToResult('0')">0</button>
-    <button onclick="clearResult()">C</button>
-    <button onclick="calculateResult()">=</button>
-    <button onclick="operate('/')">/</button>
+    <!-- Additional button for going to another page -->
+    <a href="/home" class="custom-button"></a>
 
     <script>
         function appendToResult(value) {
@@ -67,6 +138,11 @@
 
         function clearResult() {
             document.getElementById('result').value = '';
+        }
+
+        function deleteLast() {
+            let currentResult = document.getElementById('result').value;
+            document.getElementById('result').value = currentResult.slice(0, -1);
         }
 
         function calculateResult() {
@@ -80,8 +156,7 @@
         function operate(operator) {
             document.getElementById('result').value += operator;
         }
-
-        #test je
     </script>
 </body>
+
 </html>

@@ -2,6 +2,51 @@
 <html lang="en">
 
 <head>
+
+  <style>
+
+      .col-xl-8 {
+            margin-left: 0;
+          }
+
+      .custom-button1 {
+            position: absolute;
+            top: 25px; /* Adjust the distance from the top */
+            right: 125px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/home.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+      .custom-button2 {
+            position: absolute;
+            top: 25px; /* Adjust the distance from the top */
+            right: 40px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/logout.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+      .nav-item button {
+  color: #f37e5b; /* Change this to the desired color value */
+}
+  </style>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -30,13 +75,6 @@
   <link href="/static/css/profile/style.css" rel="stylesheet">
   <link href="../static/css/styles.css" rel="stylesheet" />
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Jan 09 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -52,11 +90,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/home">Halaman Utama</a></li>
+              <a href="/home" class="custom-button1"><i class="fas fa-home"></i></a>
           </ul>
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">Log Keluar</a></li>
-        </ul>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">
+                        <a href="/home" class="custom-button2"><i class="fas fa-home"></i></a>
+                    </a>
+                </li>
+          </ul>
       </div>
     </div>
   </nav>
@@ -124,10 +166,9 @@
                         </div>
                     </div>
 
-                    <div class="text-center">
+                    <div class="text-center mb-3"> <!-- Add margin-bottom utility class here -->
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form>
                   <!-- End Profile Edit Form -->
 
                   <!-- Flash Messages -->
@@ -182,40 +223,7 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer class="footer text-center">
-    <div class="container">
-        <div class="row">
-            <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Lokasi</h4>
-                <p class="lead mb-0">
-                    Universiti Utara Malaysia
-                    <br />
-                    Sintokyo, Kedah
-                </p>
-            </div>
-            <!-- Footer About Text-->
-            <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">Nota Tambahan</h4>
-                <p class="lead mb-0">
-                    Dapatkan nota tambahan anda di sini<br>
-                    <a href="http://www.matematik123.cikgunaza.com/2011/12/pendaraban-dan-pembahagian-integer.html">Nota Pendaraban dan Pembahagian<br></a>
-                    <a href="http://mathtingkatan1.weebly.com/bab-8-ukuran-asas.html">Nota Pengukuran Asas</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-  <!-- Copyright Section-->
-  <div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright &copy; 2024 EasyMath. Hak Cipta Terpelihara.</small></div>
-  </div>
-
-  <!-- End Footer -->
+  </main>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->

@@ -14,91 +14,91 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background: url('../static/assets/img/chat-bg.png') center center fixed;
+            background-size: cover;
         }
 
-        #chat-container {
-            border: 1px solid #ccc;
-            padding: 20px;
-            max-width: 400px;
+        .chat-box {
+            border: 1px solid rgba(94, 29, 8, 0.32);
+            padding: 10px; /* Adjust the padding to control the internal spacing */
+            max-width: 300px; /* Adjust the maximum width of the chat box */
             width: 100%;
+            position: fixed;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0%; /* Adjust the value to move the box further down */
+            background-color: rgba(94, 29, 8, 0.32);
         }
 
-        #messages {
+        .messages-container {
+            height: 300px;
             max-height: 300px;
             overflow-y: auto;
             margin-bottom: 10px;
             display: flex;
             flex-direction: column-reverse;
+            background-color: rgba(94, 29, 8, 0.32);
         }
 
-        #input-container {
+        .input-container {
             display: flex;
             margin-top: 10px;
+            background-color: rgba(94, 29, 8, 0.32);
         }
 
-        #message-input {
+        .message-input {
             flex: 1;
             margin-right: 10px;
             padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        #send-btn {
-            cursor: pointer;
-            padding: 8px 16px;
-            background-color: #4CAF50;
+            border: 0px solid rgba(114, 60, 43, 0.78);
+            border-radius: 0px;
+            background-color: rgba(114, 60, 43, 0.34);
             color: white;
-            border: none;
-            border-radius: 4px;
         }
 
-        #chat-box {
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: white;
+        .send-btn {
+            cursor: pointer;
+            padding: 20px 25px;
+            background-image: url("../static/assets/img/pen.png");
+            background-size: 90%;
+            background-position: center;
+            color: rgba(114, 60, 43, 0.78);
+            border: none;
             border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="messages" class="scrollable-container"></div>
+    <div class="chat-box">
+        <div class="messages-container scrollable-container"></div>
 
-        <div id="input-container">
-            <input type="text" id="message-input" placeholder="Type your message...">
-            <button id="send-btn" onclick="sendMessage()">Send</button>
+        <div class="input-container">
+            <input type="text" class="message-input" placeholder="Type your message...">
+            <button class="send-btn" onclick="sendMessage()"></button>
         </div>
     </div>
 
     <script>
-    var socket = io.connect('http://' + document.domain + ':' + location.port);
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
 
-    function sendMessage() {
-        var messageInput = document.getElementById('message-input');
-        var message = messageInput.value;
+        function sendMessage() {
+            var messageInput = document.querySelector('.message-input');
+            var message = messageInput.value;
 
-        if (message.trim() !== '') {
-            socket.emit('message', message);
-            messageInput.value = '';
+            if (message.trim() !== '') {
+                socket.emit('message', message);
+                messageInput.value = '';
+            }
         }
-    }
 
-    socket.on('message', function (data) {
-        var messagesContainer = document.getElementById('messages');
-        var chatBox = document.getElementById('chat-box');
-        var messageElement = document.createElement('div');
-        messageElement.style.color = data.color;
-        messageElement.innerHTML = '<strong>' + data.name + '</strong>: ' + data.message;
+        socket.on('message', function (data) {
+            var messagesContainer = document.querySelector('.messages-container');
+            var messageElement = document.createElement('div');
+            messageElement.style.color = data.color;
+            messageElement.innerHTML = '<strong>' + data.name + '</strong>: ' + data.message;
 
-        // Insert the new message at the beginning of the container
-        messagesContainer.insertBefore(messageElement, messagesContainer.firstChild);
-
-        // Append the message to the chat box
-        chatBox.innerHTML += '<strong>' + data.name + '</strong>: ' + data.message + '<br>';
-    });
+            // Insert the new message at the beginning of the container
+            messagesContainer.insertBefore(messageElement, messagesContainer.firstChild);
+        });
     </script>
 </body>
 </html>

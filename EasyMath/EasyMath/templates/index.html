@@ -16,7 +16,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../static/css/styles.css" rel="stylesheet" />
     </head>
+
     <body id="page-top">
+
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
@@ -31,7 +33,6 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#latihan">Latihan</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#progres">Progres</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/profile">Profil</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/chat">Chat</a></li>
 <li class="nav-item mx-0 mx-lg-1">
     <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/logout">
         <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
@@ -151,6 +152,10 @@
 
         {% endblock %}
 
+        <div id="chat-button" onclick="goToChat()">
+    <img src="../static/assets/img/chat.png" alt="Chat Button">
+  </div>
+
         <!-- Note Modal 1-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -170,75 +175,74 @@
                                     </div>
                                     <!-- Note Modal - Image-->
                                     <div class="nota">
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                         <p><strong>Pendaraban</strong><br>
                                         <strong>Definisi:</strong></p>
                                         <p>Pendaraban adalah proses perkongsian atau pembahagian kuantiti kepada bahagian yang sama.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                         <p><strong>Simbol:</strong></p>
                                         <p>Pendaraban adalah ‘x’ dan dibaca sebagai ‘darab’</p>
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                         <p><strong>Contoh bagi Pendaraban Nombor Bulat</strong>(Mendarabkan satu nombor)</p>
                                         <p><strong>9 x 4</strong></p>
                                         <img src="../static/assets/img/Pendaraban (nombor bulat).png" alt="Pendaraban (nombor bulat)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh bagi Pendaraban Nombor Bulat</strong>(Mendarabkan dua nombor)</p>
                                             <p><strong>347 x 24</strong></p>
                                             <img src="../static/assets/img/Pendaraban (2 nombor bulat).png" alt="Pendaraban (2 nombor bulat)">
                                             </div>
-                                            <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                            <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                                 <p><strong>Contoh bagi Pendaraban Nombor Bulat</strong>(Mendarabkan tiga nombor)</p>
                                                 <p><strong>826 x 415</strong></p>
                                                 <img src="../static/assets/img/Pendaraban (3 nombor bulat).png" alt="Pendaraban (3 nombor bulat)">
                                                 </div>
-                                                <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                                     <p><strong>Contoh bagi Pendaraban Nombor Perpuluhan</strong>(Mendarabkan satu nombor)</p>
                                                     <p><strong>2.478 x 5</strong></p>
                                                     <img src="../static/assets/img/Pendaraban perpuluhan (nombor bulat).png" alt="Pendaraban (nombor bulat)">
                                                     </div>
-                                                    <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                    <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                                         <p><strong>Contoh bagi Pendaraban Nombor Perpuluhan</strong>(Mendarabkan dua nombor)</p>
                                                         <p><strong>2.506 x 24</strong></p>
                                                         <img src="../static/assets/img/Pendaraban perpuluhan (2 nombor bulat).png" alt="Pendaraban (2 nombor bulat)">
                                                         </div>
-                                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                                             <p><strong>Contoh bagi Pendaraban Nombor Perpuluhan</strong>(Mendarabkan 100)</p>
                                                             <p><strong>4.503 x 100</strong></p>
                                                             <img src="../static/assets/img/Pendaraban perpuluhan (nombor 100).png" alt="Pendaraban (nombor 100)">
                                                             </div>   
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                         <p><strong>Pembahagian</strong><br>
                                         <strong>Definisi:</strong></p>
                                         <p>Pembahagian adalah proses perkongsian atau pembahagian kuantiti kepada bahagian yang sama.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                         <p><strong>Simbol:</strong></p>
                                         <p>Pembahagian adalah ‘÷’ dan dibaca sebagai ‘bahagi’</p>
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh bagi Pembahagian Nombor Bulat</strong>(Membahagikan satu nombor)</p>
                                                 <p><strong>534 ÷ 3</strong></p>
                                                 <img src="../static/assets/img/Pembahagian (nombor bulat).png" alt="Pembahagian (nombor bulat)">
                                                 </div>
-                                                <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                                     <p><strong>Contoh bagi Pembahagian Nombor Bulat</strong>(Membahagikan dua nombor)</p>
                                                     <p><strong>5 649 ÷ 21</strong></p>
                                                     <img src="../static/assets/img/Pembahagian (2 nombor bulat).png" alt="Pembahagian (2 nombor bulat)">
                                                     </div>
-                                                    <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                    <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                                         <p><strong>Contoh bagi Pembahagian Nombor Perpuluhan</strong>(Membahagikan nombor perpuluhan)</p>
                                                         <p><strong>34.80 ÷ 8</strong></p>
                                                         <img src="../static/assets/img/Pembahagian perpuluhan (nombor bulat).png" alt="Pembahagian (nombor bulat)">
                                                         </div>
-                                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #57abaf;">
+                                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                                             <p><strong>Contoh bagi Pembahagian Nombor Perpuluhan</strong>(Membahagikan 100)</p>
                                                             <p><strong>38.5 ÷ 100</strong></p>
                                                             <img src="../static/assets/img/Pembahagian perpuluhan (nombor 100).png" alt="Pembahagian (nombor 100)">
                                                             </div>
                                     </div>
                                     <button class="btn btn-primary" onclick="goToCalculator()">
-                                        <i class="fas fa-xmark fa-fw"></i>
                                         Kalkulator
                                     </button>
                                 </div>
@@ -259,7 +263,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Pengukuran Asas</h2>
+                                    <h2 class="portfolio-modal-title text-uppercase mb-0">Pengukuran Asas</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -267,23 +271,23 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <div class="nota">
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                         <p><strong>Panjang</strong></p>
                                         <p><strong>Definisi:</strong></p>
                                         <p>Panjang ialah ukuran berapa lama sesuatu objek. Unit biasa termasuk meter, sentimeter, dan kilometer. Alat untuk mengukur panjang termasuk pembaris, langkah pita, dan caliper.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Konsep Penukaran Unit</strong></p><br>
                                             <p>Penukaran unit besar kepada unit kecil perlu menggunakan operasi <strong>darab</strong></p><br>
                                             <p>Penukaran unit kecil kepada unit besar perlu menggunakan operasi <strong>bahagi</strong></p><br>
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Konsep Penukaran Unit - Panjang</strong></p>
                                             <p>1 kilometer(km) =1000 meter(m)<br>
                                                 1 meter(m) =100 centimeter(cm)<br>
                                                 1 centimeter (cm) = 10 milimeter(mm)</p>
                                                 <img src="../static/assets/img/pengukuran asas (panjang).png" alt="Pengukuran Asas (Panjang)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong> Menukar unit ukuran besar kepada unit ukuran kecil<br></p>
                                             <p><strong>Tukarkan 5 cm kepada mm</strong></p>
                                             <p style="text-indent: 20px; text-align: left;">
@@ -293,7 +297,7 @@
                                             <p style="text-indent: 20px; text-align: left;">
                                             5 cm = 50 mm</p>   
                                             </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh:</strong>Menukar unit ukuran kecil kepada unit ukuran besar<br></p>
                                             <p><strong>Tukarkan 3 m 60 cm kepada m</strong><br></p>
                                             <p style="text-indent: 20px; text-align: left;">
@@ -303,36 +307,31 @@
                                             <p style="text-indent: 20px; text-align: left;">
                                             60 cm = 0.6 m</p> 
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong>Penambahan<br></p>
                                             <p><strong>7 m 42 cm + 15 m 59 cm</strong><br></p>
                                             <img src="../static/assets/img/Penambahan (panjang).png" alt="Penambahan (Panjang)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
-                                            <p><strong>Contoh:</strong>Penolakan<br></p>
-                                            <p><strong>42 cm 24 mm - 36 cm 26 mm</strong><br></p>
-                                            <img src="../static/assets/img/Penolakan (panjang).png" alt="Penolakan (Panjang)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh:</strong>Pendaraban<br></p>
                                             <p><strong>15 km 414 cm x 6</strong><br></p>
                                             <img src="../static/assets/img/Pendaraban (panjang).png" alt="Pendaraban (Panjang)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong>Pembahagian<br></p>
                                             <p><strong>42 m 52 cm ÷ 4</strong><br></p>
                                             <img src="../static/assets/img/Pembahagian (panjang).png" alt="Pembahagian (Panjang)">
                                         </div>    
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                         <p><strong>Jisim</strong></p>
                                         <p><strong>Definisi:</strong></p>
                                         <p>Jisim adalah ukuran jumlah jirim dalam objek. Unit biasa termasuk gram dan kilogram. Baki dan skala digunakan untuk mengukur jisim.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Konsep Penukaran Unit - Panjang</strong></p>
                                             <p>1 kilogram(kg) = 1000 gram(g)<br></p>
                                             <img src="../static/assets/img/Pengukuran asas (jisim).png" alt="Pengukuran Asas (jisim)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh:</strong> Menukar unit ukuran besar kepada unit ukuran kecil<br></p>
                                             <p><strong>Tukarkan 5 kg kepada g</strong></p>
                                             <p style="text-indent: 20px; text-align: left;">
@@ -342,7 +341,7 @@
                                             <p style="text-indent: 20px; text-align: left;">
                                             5 kg = 5000 g</p>   
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong> Menukar unit ukuran kecil kepada unit ukuran besar<br></p>
                                             <p><strong>Tukarkan 5000 g kepada kg</strong></p>
                                             <p style="text-indent: 20px; text-align: left;">
@@ -352,22 +351,22 @@
                                             <p style="text-indent: 20px; text-align: left;">
                                             5000 g = 5 kg</p>   
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh:</strong>Penambahan<br></p>
                                             <p><strong>5 kg 210 g + 6 kg 370 g</strong><br></p>
                                             <img src="../static/assets/img/Penambahan (jisim).png" alt="Penambahan (jisim)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong>Penolakan<br></p>
                                             <p><strong>9 kg 780 g - 2 kg 350 g</strong><br></p>
                                             <img src="../static/assets/img/Penolakan (jisim).png" alt="Penolakan (jisim)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
                                             <p><strong>Contoh:</strong>Pendaraban<br></p>
                                             <p><strong>0.45 kg x 15</strong><br></p>
                                             <img src="../static/assets/img/Pendaraban (jisim).png" alt="Pendaraban (jisim)">
                                         </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #b719cb;">
+                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
                                             <p><strong>Contoh:</strong>Pembahagian<br></p>
                                             <p><strong>3.5 kg ÷ 7</strong><br></p>
                                             <img src="../static/assets/img/Pembahagian (jisim).png" alt="Pembahagian (jisim)">
@@ -397,7 +396,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Darab dan Bahagi</h2>
+                            <h2 class="portfolio-modal-title mb-0">Darab & Bahagi</h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
@@ -412,7 +411,7 @@
                                     </div>
                                 </div>
 
-                            <div class="container">
+
     <div class="row flex-wrap">
     <div class="col-lg-6 mb-5 mb-lg-0">
         <a href="{{ url_for('multiplygame') }}"> <!-- Update the href attribute to the desired page URL -->
@@ -426,7 +425,7 @@
     </div>
 
     <div class="col-lg-6 mb-5 mb-lg-0">
-        <a href=href="{{ url_for('divisiongame') }}"> <!-- Update the href attribute to the desired page URL -->
+        <a href="{{ url_for('divisiongame') }}"> <!-- Update the href attribute to the desired page URL -->
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -436,16 +435,18 @@
         </a>
     </div>
 
+    <div class="row flex-wrap">
     <div class="col-lg-6 mb-5 mb-lg-0">
-        <a href="/hard-page"> <!-- Update the href attribute to the desired page URL -->
+        <a href="{{ url_for('multiplygame') }}"> <!-- Update the href attribute to the desired page URL -->
             <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                 </div>
-                <img class="img-fluid rounded" src="../static/assets/img/hard.png" alt="..." style="width: 80%; max-height: 200px;">
+
             </div>
         </a>
     </div>
+
 </div>
 </div>
                                 <!-- You can customize the button text and style here -->
@@ -510,10 +511,9 @@
         </div>
     </div>
 </div>
+</div>
 
-<div id="chat-button" onclick="goToChat()">
-    <img src="../static/assets/img/chat.png" alt="Chat Button">
-  </div>
+
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -530,7 +530,7 @@
     }
 
     function goToChat() {
-      window.location.href = '/chat.html';
+      window.location.href = '/chat';
     }
 
     var socket = io.connect('http://' + document.domain + ':' + location.port);

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: url('../static/assets/img/converter-bg.png') center center no-repeat fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .conversion-group {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .ellipse1 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      background: url('../static/assets/img/km.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #000000; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+    .ellipse2 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      background: url('../static/assets/img/m.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #0a0a0a; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+    .ellipse3 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border:  2px solid #000000;
+      background: url('../static/assets/img/cn.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #000000; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+    .ellipse4 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border:  2px solid #000000x;
+      background: url('../static/assets/img/mm.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #000000; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+    .arrow {
+      margin: 0 20px;
+    }
+
+    .factor {
+      font-size: 12px;
+    }
+
+    input {
+      text-align: center;
+    }
+
+    .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/back.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+  </style>
+</head>
+<body>
+
+<a href="/home" class="custom-button"></a>
+
+<div class="container">
+  <div class="conversion-group">
+    <div class="ellipse1">
+      <input type="number" id="km" value="0" onchange="convert('km')" />
+    </div>
+
+    <div class="arrow">
+      <div class="factor"></div>
+    </div>
+  </div>
+
+  <div class="conversion-group">
+    <div class="ellipse2">
+      <input type="number" id="m" value="0" onchange="convert('m')" />
+    </div>
+
+    <div class="arrow">
+      <div class="factor"></div>
+    </div>
+  </div>
+
+  <div class="conversion-group">
+    <div class="ellipse3">
+      <input type="number" id="cm" value="0" onchange="convert('cm')" />
+    </div>
+
+    <div class="arrow">
+      <div class="factor"></div>
+    </div>
+  </div>
+
+  <div class="conversion-group">
+    <div class="ellipse4">
+      <input type="number" id="mm" value="0" onchange="convert('mm')" />
+    </div>
+
+    <div class="arrow">
+      <div class="factor"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function convert(unit) {
+    let value = parseFloat(document.getElementById(unit).value);
+
+    if (isNaN(value) || value < 0) {
+      alert("Please enter a positive number");
+      return;
+    }
+
+    switch (unit) {
+      case "km":
+        document.getElementById("m").value = value * 1000;
+        document.getElementById("cm").value = value * 100000;
+        document.getElementById("mm").value = value * 1000000;
+        break;
+      case "m":
+        document.getElementById("km").value = value / 1000;
+        document.getElementById("cm").value = value * 100;
+        document.getElementById("mm").value = value * 1000;
+        break;
+      case "cm":
+        document.getElementById("km").value = value / 100000;
+        document.getElementById("m").value = value / 100;
+        document.getElementById("mm").value = value * 10;
+        break;
+      case "mm":
+        document.getElementById("km").value = value / 1000000;
+        document.getElementById("m").value = value / 1000;
+        document.getElementById("cm").value = value / 10;
+        break;
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Meta tags -->
   <meta charset="UTF-8">
@@ -9,140 +10,98 @@
   <title>EasyMath</title>
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
   <!-- MDB -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url("../static/assets/img/signup.png");
+      background-size: cover;
+      margin: 0;
+    }
+
+    .col-md-8 {
+      max-width: 400px; /* Adjust the maximum width of the column */
+    }
+
+    .form-label,
+    .form-check-label {
+      font-size: 14px; /* Adjust the font size of labels */
+    }
+
+    .btn {
+      font-size: 14px; /* Adjust the font size of buttons */
+    }
+
+    .footer {
+      margin-top: 10px;
+      font-size: 14px; /* Adjust the font size of the footer text */
+    }
+  </style>
 
 </head>
+
 <body>
- <!-- Navigation bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">PAUTAN DAFTAR MASUK</a>
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
 
   <!-- Card -->
   <div class="container my-5">
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-header bg-dark text-white text-center">
-            <h3>Daftar Masuk</h3>
+      <div class="col-md-8">
+        <!-- Form -->
+        <form method="POST" action="/signup">
+
+          <!-- Name input -->
+          <div class="form-outline mb-2">
+            <input type="text" id="name" name="name" class="form-control" required />
+            <label class="form-label" for="name">Nama Anda</label>
           </div>
-          <!-- Card body -->
-          <div class="card-body">
-            <!-- Form -->
-            <form method="POST" action="/signup">
 
-              <!-- Name input -->
-              <div class="form-outline mb-4">
-                <input type="text" id="name" name="name" class="form-control" required />
-                <label class="form-label" for="name">Nama Anda</label>
-              </div>
-
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="email" name="email" class="form-control" required />
-                <label class="form-label" for="email">Emel Anda</label>
-              </div>
-
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="password" name="password" class="form-control" required />
-                <label class="form-label" for="password">Kata Lalaun</label>
-              </div>
-
-              <!-- Confirm password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="confirm" name="confirm" class="form-control" required />
-                <label class="form-label" for="confirm">Ulang Kata Laluan</label>
-              </div>
-
-              <!-- Terms of service checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="terms" name="terms" required />
-                <label class="form-check-label" for="terms">
-                  Dengan ini saya berjanji untuk memenuhi dan mematuhi segala <a href="#!">terma dan syarat</a> yang ditetapkan.
-                </label>
-              </div>
-
-              <!-- Register button -->
-              <button type="submit" class="btn btn-dark btn-block mb-4">Daftar</button>
-              <!-- Message -->
-              {% if message %}
-              <div class="alert alert-danger" role="alert">
-                {{ message }}
-              </div>
-              {% endif %}
-            </form>
+          <!-- Email input -->
+          <div class="form-outline mb-2">
+            <input type="email" id="email" name="email" class="form-control" required />
+            <label class="form-label" for="email">Emel Anda</label>
           </div>
-          <!-- Card footer -->
-          <div class="card-footer bg-dark text-white text-center">
-            <p>Akaun anda telah ada? <a href="/login">Log Masuk Sini</a></p>
+
+          <!-- Password input -->
+          <div class="form-outline mb-2">
+            <input type="password" id="password" name="password" class="form-control" required />
+            <label class="form-label" for="password">Kata Lalaun</label>
           </div>
+
+          <!-- Confirm password input -->
+          <div class="form-outline mb-2">
+            <input type="password" id="confirm" name="confirm" class="form-control" required />
+            <label class="form-label" for="confirm">Ulang Kata Laluan</label>
+          </div>
+
+          <!-- Terms of service checkbox -->
+          <div class="form-check d-flex justify-content-center mb-2">
+            <input class="form-check-input me-2" type="checkbox" value="" id="terms" name="terms" required />
+            <label class="form-check-label" for="terms">
+              Saya bersedia untuk menyertai krew Orcas menjelajahi dunia MATEMATIK !!.
+            </label>
+          </div>
+
+          <!-- Register button -->
+          <button type="submit" class="btn btn-dark btn-block mb-2">Daftar</button>
+        </form>
+
+        <div class="footer">
+          <p>Sudah pernah mendaftar? <a href="/login" style="color: rgba(138,74,28,0.85);">Log Masuk Di Sini</a></p>
         </div>
+
       </div>
     </div>
   </div>
 
-          <!-- Footer-->
-          <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Lokasi</h4>
-                        <p class="lead mb-0">
-                            Universiti Utara Malaysia
-                            <br />
-                            Sintokyo, Kedah
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Aplikasi lain</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Nota Tambahan</h4>
-                        <p class="lead mb-0">
-                            Dapatkan nota tambahan anda di sini<br>
-                            <a href="http://www.matematik123.cikgunaza.com/2011/12/pendaraban-dan-pembahagian-integer.html">Nota Pendaraban dan Pembahagian<br></a>
-                            <a href="http://mathtingkatan1.weebly.com/bab-8-ukuran-asas.html">Nota Pengukuran Asas</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; 2024 EasyMath. Hak Cipta Terpelihara.</small></div>
-        </div> 
-  <!-- MDB -->
-  <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
-  ></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 </body>
-</html>
 
+</html>

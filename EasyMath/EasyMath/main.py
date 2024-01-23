@@ -11,7 +11,7 @@ import random
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '1234',
     'database': 'math'
 }
 
@@ -259,15 +259,15 @@ def measurement():
 
   # Get the current user object and render the main template with the user data
   user = get_current_user()
-  return render_template('measurement.html', user=user, error=None)
+  return render_template('converter.html', user=user, error=None)
 
 @app.route('/divisiongame')
 def divisiongame():
-    return render_template('divide-game/templates/division-game.html', error=None)
+    return render_template('division-game.html', error=None)
 
 @app.route('/multiplygame')
 def multiplygame():
-    return render_template('multiply-game/multiply-game.html', error=None)
+    return render_template('multiply-game.html', error=None)
 
 @app.route('/exercisealgebraeasy3')
 def exercisealgebraeasy3():
@@ -298,11 +298,8 @@ def chat():
 @socketio.on('message')
 def handle_message(msg):
     user = session.get('name', 'Guest')
-    color = generate_random_color()
-    emit('message', {'name': user, 'message': msg, 'color': color}, broadcast=True)
+    emit('message', {'name': user, 'message': msg}, broadcast=True)
 
-def generate_random_color():
-    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, allow_unsafe_werkzeug=True)
