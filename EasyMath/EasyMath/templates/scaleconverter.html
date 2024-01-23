@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EasyMath</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('../static/assets/img/converter1.png') center center no-repeat fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10%; /* Adjust the right margin */
+        }
+
+        .conversion-group {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .ellipse1 input,
+        .ellipse2 input,
+        .ellipse3 input,
+        .ellipse4 input {
+            width: 150px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #000000;
+            background-size: cover;
+            color: #000000;
+        }
+
+        .ellipse1 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      background: url('../static/assets/img/kg.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #000000; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+        .ellipse2 input {
+      width: 150px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      background: url('../static/assets/img/g.png') center center no-repeat; /* Replace 'your-image-url.jpg' with the URL of your image */
+      background-size: cover; /* Ensure the image covers the entire input box */
+      color: #000000; /* Set text color to white or a color that contrasts well with your image */
+    }
+
+        .arrow {
+            margin: 0 20px;
+        }
+
+        .factor {
+            font-size: 12px;
+        }
+
+        input {
+            text-align: center;
+        }
+
+        .custom-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/home.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<a href="/home" class="custom-button"></a>
+
+<div class="container">
+    <div class="conversion-group">
+        <div class="ellipse1">
+            <input type="number" id="kg" value="0" onchange="convert('kg')" />
+        </div>
+
+        <div class="arrow">
+            <div class="factor"></div>
+        </div>
+    </div>
+
+    <div class="conversion-group">
+        <div class="ellipse2">
+            <input type="number" id="g" value="0" onchange="convert('g')" />
+        </div>
+
+        <div class="arrow">
+            <div class="factor"></div>
+        </div>
+    </div>
+
+    <div class="conversion-group">
+        <div class="ellipse3">
+            <!-- Add an empty div for the arrow placeholder -->
+            <div class="factor"></div>
+        </div>
+
+        <div class="arrow"> <!-- Add an empty div for the arrow placeholder -->
+            <div class="factor"></div>
+        </div>
+    </div>
+
+    <div class="conversion-group">
+        <div class="ellipse4">
+            <!-- Add an empty div for the arrow placeholder -->
+            <div class="factor"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function convert(unit) {
+        let value = parseFloat(document.getElementById(unit).value);
+
+        if (isNaN(value) || value < 0) {
+            alert("Please enter a positive number");
+            return;
+        }
+
+        switch (unit) {
+            case "kg":
+                document.getElementById("g").value = value * 1000;
+                break;
+            case "g":
+                document.getElementById("kg").value = value / 1000;
+                break;
+        }
+    }
+</script>
+
+</body>
+</html>

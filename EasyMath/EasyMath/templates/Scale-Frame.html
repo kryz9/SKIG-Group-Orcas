@@ -3,16 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Timbang</title>
+    <title>EasyMath</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
     <style>
         body 
 		{
             text-align: center;
+            background-color: rgba(114, 60, 43, 0.73);
         }
         
 		#iframeContainer 
 		{
             margin: 20px auto;
+        }
+
+        .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/home.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -23,5 +42,8 @@
     <div id="iframeContainer">
         <iframe src="https://iwant2study.org/lookangejss/math/ejss_model_shmmassscale_5_kg_version/shmmassscale_5_kg_version_Simulation.xhtml" width="800" height="600"></iframe>
     </div>
+
+    <a href="/home" class="custom-button"></a>
+
 </body>
 </html>

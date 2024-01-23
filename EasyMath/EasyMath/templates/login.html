@@ -7,6 +7,7 @@
 
   <!-- Title -->
   <title>EasyMath</title>
+  <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
 
   <!-- Font Awesome -->
   <link
@@ -41,6 +42,20 @@
   display: block; /* Make the button a block element to take full width of its container */
 }
 
+    .form-label1{
+      position: absolute;
+      width: 100px;
+      top: 50%;
+      left: 0.8rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: transform 0.3s, font-size 0.3s, color 0.3s;
+    }
+
+    .form-outline{
+        width: 350px;
+        left: 20%;
+    }
   </style>
 </head>
 <body>
@@ -55,12 +70,12 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="email" name="email" class="form-control" required />
-              <label class="form-label" for="email">Emel Anda</label>
+              <label class="form-label1" for="email">Emel Anda</label>
             </div>
             <!-- Password input -->
             <div class="form-outline mb-4">
               <input type="password" id="password" name="password" class="form-control" required />
-              <label class="form-label" for="password">Kata Laluan</label>
+              <label class="form-label1" for="password">Kata Laluan</label>
             </div>
             <!-- Login button -->
             <button type="submit" class="btn btn-custom btn-block mb-4">Log Masuk</button>
@@ -92,26 +107,41 @@
   <!-- Custom JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const emailInput = document.getElementById('email');
-      const passwordInput = document.getElementById('password');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
 
-      emailInput.addEventListener('input', function() {
-        toggleLabelVisibility(emailInput);
-      });
-
-      passwordInput.addEventListener('input', function() {
-        toggleLabelVisibility(passwordInput);
-      });
-
-      function toggleLabelVisibility(inputElement) {
-        const label = inputElement.nextElementSibling;
-        if (inputElement.value.trim() !== '') {
-          label.style.display = 'none';
-        } else {
-          label.style.display = 'block';
-        }
-      }
+    emailInput.addEventListener('input', function() {
+      toggleLabelVisibility(emailInput);
+      highlightInput(emailInput);
     });
+
+    passwordInput.addEventListener('input', function() {
+      toggleLabelVisibility(passwordInput);
+    });
+
+    function toggleLabelVisibility(inputElement) {
+      const label = inputElement.nextElementSibling;
+      if (inputElement.value.trim() !== '') {
+        label.style.display = 'none';
+      } else {
+        label.style.display = 'block';
+      }
+    }
+
+    function highlightInput(inputElement) {
+      if (isValidEmail(inputElement.value)) {
+        inputElement.style.borderColor = 'green'; // Set your desired highlight color
+      } else {
+        inputElement.style.borderColor = ''; // Reset to default
+      }
+    }
+
+    function isValidEmail(email) {
+      // Add your email validation logic here
+      // For a simple example, check if it contains an @ symbol
+      return email.includes('@');
+    }
+  });
   </script>
 </body>
 </html>

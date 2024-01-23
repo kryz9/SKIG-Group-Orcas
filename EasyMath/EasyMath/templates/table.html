@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasyMath</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
+
+    <style>
+        body {
+            background-image: url("../static/assets/img/sifir.png");
+            background-size: cover;
+        }
+
+        table {
+            color: white;
+            width:50%;
+            top: 60%;
+            left: 45%;
+            position: absolute;
+            margin-top: -260px;
+            margin-left: -274px;
+            border: 2px solid #112680;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            padding: 12px;
+            text-align: center;
+            cursor: pointer; /* Add cursor pointer to indicate cells are clickable */
+        }
+
+        th {
+            font-size: 25px;
+        }
+
+        .bold {
+            font-weight: bold;
+            font-size: 20px;
+            background-color: #0a58ca;
+        }
+
+        /* Add a class for highlighting selected row and column */
+        .active {
+            background-color: #50afec;
+            opacity: 0.5; /* Set lower opacity for entire rows and columns */
+        }
+
+        /* Add a class for highlighting the bold cells */
+        .bold.active {
+            background-color: yellow;
+            opacity: 1; /* Set higher opacity for the bold cells */
+        }
+
+        /* Add a class for highlighting the clicked cell */
+        .clicked {
+            background-color: #ffcc00; /* Set the color for the clicked cell */
+        }
+
+        .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            color: #ffffff;
+            background-image: url("../static/assets/img/home1.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/home" class="custom-button"></a>
+
+    <table border="1px">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr class="bold">
+                <td class="bold">1</td>
+                <td class="bold">2</td>
+                <td class="bold">3</td>
+                <td class="bold">4</td>
+                <td class="bold">5</td>
+                <td class="bold">6</td>
+                <td class="bold">7</td>
+                <td class="bold">8</td>
+                <td class="bold">9</td>
+                <td class="bold">10</td>
+            </tr>
+
+            <tr>
+                <td class="bold">2</td>
+                <td>4</td>
+                <td>6</td>
+                <td>8</td>
+                <td>10</td>
+                <td>12</td>
+                <td>14</td>
+                <td>16</td>
+                <td>18</td>
+                <td>20</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">3</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>12</td>
+                    <td>15</td>
+                    <td>18</td>
+                    <td>21</td>
+                    <td>24</td>
+                    <td>27</td>
+                    <td>30</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">4</td>
+                    <td>8</td>
+                    <td>12</td>
+                    <td>16</td>
+                    <td>20</td>
+                    <td>24</td>
+                    <td>28</td>
+                    <td>32</td>
+                    <td>36</td>
+                    <td>40</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">5</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>20</td>
+                    <td>25</td>
+                    <td>30</td>
+                    <td>35</td>
+                    <td>40</td>
+                    <td>45</td>
+                    <td>50</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">6</td>
+                    <td>12</td>
+                    <td>18</td>
+                    <td>24</td>
+                    <td>30</td>
+                    <td>36</td>
+                    <td>42</td>
+                    <td>48</td>
+                    <td>54</td>
+                    <td>60</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">7</td>
+                    <td>14</td>
+                    <td>21</td>
+                    <td>28</td>
+                    <td>35</td>
+                    <td>42</td>
+                    <td>49</td>
+                    <td>56</td>
+                    <td>63</td>
+                    <td>70</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">8</td>
+                    <td>16</td>
+                    <td>24</td>
+                    <td>32</td>
+                    <td>40</td>
+                    <td>48</td>
+                    <td>56</td>
+                    <td>64</td>
+                    <td>72</td>
+                    <td>80</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">9</td>
+                    <td>18</td>
+                    <td>27</td>
+                    <td>36</td>
+                    <td>45</td>
+                    <td>54</td>
+                    <td>63</td>
+                    <td>72</td>
+                    <td>81</td>
+                    <td>90</td>
+            </tr>
+
+            <tr>
+                    <td class="bold">10</td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>40</td>
+                    <td>50</td>
+                    <td>60</td>
+                    <td>70</td>
+                    <td>80</td>
+                    <td>90</td>
+                    <td>100</td>
+            </tr>
+        </table>
+
+        <script>
+            // Get all the cells in the table
+            const cells = document.querySelectorAll('td');
+
+            // Add a click event listener to each cell
+            cells.forEach(cell => {
+                cell.addEventListener('click', function () {
+                    // Remove the 'active' class from all cells
+                    cells.forEach(cell => cell.classList.remove('active', 'clicked'));
+
+                    // Add the 'active' class to the clicked cell's row and column
+                    const rowIndex = this.parentNode.rowIndex;
+                    const columnIndex = this.cellIndex;
+
+                    // Highlight the entire row
+                    document.querySelectorAll(`tr:nth-child(${rowIndex + 1}) td`).forEach(cell => cell.classList.add('active'));
+
+                    // Highlight the entire column
+                    document.querySelectorAll(`td:nth-child(${columnIndex + 1})`).forEach(cell => cell.classList.add('active'));
+
+                    // Highlight the clicked cell
+                    this.classList.add('clicked');
+                });
+            });
+        </script>
+    </body>
+</html>

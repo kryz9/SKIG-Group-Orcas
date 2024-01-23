@@ -12,7 +12,7 @@ import random
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '1234',
     'database': 'math'
 }
 
@@ -51,7 +51,7 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    photo = db.Column(db.String(100), nullable=True)
+    #photo = db.Column(db.String(100), nullable=True)
 
     def __repr__(self):
         return f'<User {self.name}>'
@@ -169,7 +169,7 @@ def update_profile_picture():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         # Update the user's photo attribute in the database
-        user.photo = url_for('uploaded_file', filename=filename)
+        #user.photo = url_for('uploaded_file', filename=filename)
 
         # Commit the changes to the database
         db.session.commit()
@@ -346,7 +346,7 @@ def measurement():
 
     # Get the current user object and render the main template with the user data
     user = get_current_user()
-    return render_template('converter.html', user=user, error=None)
+    return render_template('measurementconverter.html', user=user, error=None)
 
 
 @app.route('/divisiongame')
@@ -393,6 +393,29 @@ def handle_message(msg):
     user = session.get('name', 'Guest')
     emit('message', {'name': user, 'message': msg}, broadcast=True)
 
+@app.route('/table')
+def table():
+    return render_template('table.html')
+
+@app.route('/scaleconverter')
+def scaleconverter():
+    return render_template('scaleconverter.html')
+
+@app.route('/scale-game')
+def scale_game():
+    return render_template('Scale-Frame.html')
+
+@app.route('/caraukur')
+def caraukur():
+    return render_template('caraukur.html')
+
+@app.route('/caraimbang')
+def caratimbang():
+    return render_template('cara-timbang.html')
+
+@app.route('/measurementconverter')
+def measurementconverter():
+    return render_template('measurementconverter.html')
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, allow_unsafe_werkzeug=True)

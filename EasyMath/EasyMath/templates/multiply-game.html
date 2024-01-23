@@ -3,7 +3,8 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>OPERASI DARAB</title>
+        <title>EasyMath</title>
+        <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
         <link rel="stylesheet" href="../static/css/multiply-style.css">
 
@@ -12,10 +13,32 @@
 		  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
 		  rel="stylesheet"
 		/>
+
+        <style>
+            .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/home1.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        </style>
 		
     </head>
 
     <body>
+
+    <a href="/home" class="custom-button"></a>
+
         <h1>OPERASI DARAB</h1>
          <div id="container">
             <div id="score">
@@ -44,7 +67,7 @@
             </div>
             <div id="timeremaining">
                 Masa yang tinggal :
-                <span id="timeremainingvalue">60</span>
+                <span id="timeremainingvalue">30</span>
                 saat
             </div>
             <div id="gameOver">

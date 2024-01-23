@@ -9,6 +9,7 @@
   <!-- Title -->
   <title>EasyMath</title>
 
+  <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
@@ -31,17 +32,40 @@
       max-width: 400px; /* Adjust the maximum width of the column */
     }
 
-    .form-label,
+    .form-outline {
+      position: relative;
+    }
+
+    .form-control:focus+.form-label,
+    .form-control:valid+.form-label {
+      transform: translateY(-125%);
+      font-size: 12px;
+      color: rgba(108, 117, 125, 0);
+    }
+
+    .form-label {
+      position: absolute;
+      top: 50%;
+      left: 0.8rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: transform 0.3s, font-size 0.3s, color 0.3s;
+    }
+
     .form-check-label {
       font-size: 14px; /* Adjust the font size of labels */
     }
 
     .btn {
       font-size: 14px; /* Adjust the font size of buttons */
+      width: 150px;
+      margin: 0 auto;
+      background-color: rgb(114, 60, 43);
     }
 
     .footer {
       margin-top: 10px;
+      margin-left:15%;
       font-size: 14px; /* Adjust the font size of the footer text */
     }
   </style>
@@ -55,7 +79,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <!-- Form -->
-        <form method="POST" action="/signup">
+        <form method="POST" action="/signup" novalidate>
 
           <!-- Name input -->
           <div class="form-outline mb-2">
@@ -72,7 +96,7 @@
           <!-- Password input -->
           <div class="form-outline mb-2">
             <input type="password" id="password" name="password" class="form-control" required />
-            <label class="form-label" for="password">Kata Lalaun</label>
+            <label class="form-label" for="password">Kata Laluan</label>
           </div>
 
           <!-- Confirm password input -->
@@ -102,6 +126,18 @@
   </div>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const formControls = document.querySelectorAll('.form-control');
+
+      formControls.forEach((formControl) => {
+        formControl.addEventListener('input', function () {
+          const formLabel = this.nextElementSibling;
+          formLabel.style.visibility = this.value ? 'hidden' : 'visible';
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>

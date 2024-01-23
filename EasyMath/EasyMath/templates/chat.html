@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask SocketIO Chat</title>
+    <title>EasyMath</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
     <style>
         body {
@@ -20,29 +21,34 @@
 
         .chat-box {
             border: 1px solid rgba(94, 29, 8, 0.32);
-            padding: 10px; /* Adjust the padding to control the internal spacing */
-            max-width: 300px; /* Adjust the maximum width of the chat box */
-            width: 100%;
+            width: 300px;
+            padding: 15px; /* Adjust the padding to control th/* Adjust the maximum width of the chat box */
             position: fixed;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
             margin-bottom: 0%; /* Adjust the value to move the box further down */
             background-color: rgba(94, 29, 8, 0.32);
+            border-radius: 30px;
         }
 
         .messages-container {
-            height: 300px;
-            max-height: 300px;
+            height: 250px;
+            width: 300px;
+            max-height: 250px;
             overflow-y: auto;
             margin-bottom: 10px;
             display: flex;
             flex-direction: column-reverse;
-            background-color: rgba(94, 29, 8, 0.32);
+            background-color: rgba(94, 29, 8, 0.18);
+            border-radius: 10px;
+            color: white;
+
         }
 
         .input-container {
             display: flex;
             margin-top: 10px;
-            background-color: rgba(94, 29, 8, 0.32);
+            background-color: rgba(94, 29, 8, 0);
+
         }
 
         .message-input {
@@ -50,7 +56,7 @@
             margin-right: 10px;
             padding: 8px;
             border: 0px solid rgba(114, 60, 43, 0.78);
-            border-radius: 0px;
+            border-radius: 20px;
             background-color: rgba(114, 60, 43, 0.34);
             color: white;
         }
@@ -65,9 +71,31 @@
             border: none;
             border-radius: 4px;
         }
+
+        /* Style for the additional button */
+        .custom-button {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top */
+            left: 10px; /* Adjust the distance from the left */
+            background-color: #8d4b37;
+            color: #ffffff;
+            background-image: url("../static/assets/img/home.png");
+            background-size: cover;
+            background-position: center;
+            text-decoration: none;
+            display: inline-block;
+            padding: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Additional button for going to another page -->
+    <a href="/home" class="custom-button"></a>
+
     <div class="chat-box">
         <div class="messages-container scrollable-container"></div>
 

@@ -47,7 +47,11 @@
         <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="../static/assets/img/avataaars.svg" alt="..." />
+        {% if user.photo %}
+            <img class="masthead-avatar mb-5" src="{{ user.photo }}" alt="Profile photo" />
+        {% else %}
+            <img class="masthead-avatar mb-5" src="../static/assets/img/avataaars.svg" alt="Profile photo" />
+        {% endif %}
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang {{ user.name }}<br>Mari Kita Belajar</h1>
         <!-- Icon Divider-->
@@ -78,7 +82,7 @@
 
                     <!-- Note 1-->
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal7">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
@@ -87,7 +91,7 @@
                     </div>
                     <!-- Note 2-->
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
@@ -121,13 +125,18 @@
 
                 <!-- About Box 2 -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    <a href="/scale-game">
+                        <div class="portfolio-item mx-auto position-relative">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
                         </div>
-                        <img class="img-fluid rounded" src="../static/assets/img/measurement.png" alt="..." />
-                    </div>
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -136,19 +145,19 @@
 
 
         <!-- Contact Section-->
-        <section class="page-section" id="progres">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase mb-0">Progres</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-
-            </div>
-        </section>
+{#        <section class="page-section" id="progres">#}
+{#            <div class="container">#}
+{#                <!-- Contact Section Heading-->#}
+{#                <h2 class="page-section-heading text-center text-uppercase mb-0">Progres</h2>#}
+{#                <!-- Icon Divider-->#}
+{#                <div class="divider-custom">#}
+{#                    <div class="divider-custom-line"></div>#}
+{#                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>#}
+{#                    <div class="divider-custom-line"></div>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </section>#}
 
         {% endblock %}
 
@@ -243,7 +252,10 @@
                                                             </div>
                                     </div>
                                     <button class="btn btn-primary" onclick="goToCalculator()">
-                                        Kalkulator
+                                        KALKULATOR
+                                    </button>
+                                    <button class="btn btn-primary" onclick="goToSifir()">
+                                        SIFIR
                                     </button>
                                 </div>
                             </div>
@@ -253,131 +265,22 @@
             </div>
         </div>
 
-        <!-- Portfolio Modal 2-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-uppercase mb-0">Pengukuran Asas</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <div class="nota">
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                        <p><strong>Panjang</strong></p>
-                                        <p><strong>Definisi:</strong></p>
-                                        <p>Panjang ialah ukuran berapa lama sesuatu objek. Unit biasa termasuk meter, sentimeter, dan kilometer. Alat untuk mengukur panjang termasuk pembaris, langkah pita, dan caliper.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Konsep Penukaran Unit</strong></p><br>
-                                            <p>Penukaran unit besar kepada unit kecil perlu menggunakan operasi <strong>darab</strong></p><br>
-                                            <p>Penukaran unit kecil kepada unit besar perlu menggunakan operasi <strong>bahagi</strong></p><br>
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Konsep Penukaran Unit - Panjang</strong></p>
-                                            <p>1 kilometer(km) =1000 meter(m)<br>
-                                                1 meter(m) =100 centimeter(cm)<br>
-                                                1 centimeter (cm) = 10 milimeter(mm)</p>
-                                                <img src="../static/assets/img/pengukuran asas (panjang).png" alt="Pengukuran Asas (Panjang)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong> Menukar unit ukuran besar kepada unit ukuran kecil<br></p>
-                                            <p><strong>Tukarkan 5 cm kepada mm</strong></p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            1 cm = 10 mm</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5 cm = 5 x 10 mm</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5 cm = 50 mm</p>   
-                                            </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Contoh:</strong>Menukar unit ukuran kecil kepada unit ukuran besar<br></p>
-                                            <p><strong>Tukarkan 3 m 60 cm kepada m</strong><br></p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            100 cm = 1 m</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            60 cm = 60 ÷ 100m </p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            60 cm = 0.6 m</p> 
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong>Penambahan<br></p>
-                                            <p><strong>7 m 42 cm + 15 m 59 cm</strong><br></p>
-                                            <img src="../static/assets/img/Penambahan (panjang).png" alt="Penambahan (Panjang)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Contoh:</strong>Pendaraban<br></p>
-                                            <p><strong>15 km 414 cm x 6</strong><br></p>
-                                            <img src="../static/assets/img/Pendaraban (panjang).png" alt="Pendaraban (Panjang)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong>Pembahagian<br></p>
-                                            <p><strong>42 m 52 cm ÷ 4</strong><br></p>
-                                            <img src="../static/assets/img/Pembahagian (panjang).png" alt="Pembahagian (Panjang)">
-                                        </div>    
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                        <p><strong>Jisim</strong></p>
-                                        <p><strong>Definisi:</strong></p>
-                                        <p>Jisim adalah ukuran jumlah jirim dalam objek. Unit biasa termasuk gram dan kilogram. Baki dan skala digunakan untuk mengukur jisim.</p> </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Konsep Penukaran Unit - Panjang</strong></p>
-                                            <p>1 kilogram(kg) = 1000 gram(g)<br></p>
-                                            <img src="../static/assets/img/Pengukuran asas (jisim).png" alt="Pengukuran Asas (jisim)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Contoh:</strong> Menukar unit ukuran besar kepada unit ukuran kecil<br></p>
-                                            <p><strong>Tukarkan 5 kg kepada g</strong></p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            1 kg = 1000 g</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5 kg = 5 x 1000 g</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5 kg = 5000 g</p>   
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong> Menukar unit ukuran kecil kepada unit ukuran besar<br></p>
-                                            <p><strong>Tukarkan 5000 g kepada kg</strong></p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            1000 g = 1 kg</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5000 g = 5000 ÷ 1000 kg</p>
-                                            <p style="text-indent: 20px; text-align: left;">
-                                            5000 g = 5 kg</p>   
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Contoh:</strong>Penambahan<br></p>
-                                            <p><strong>5 kg 210 g + 6 kg 370 g</strong><br></p>
-                                            <img src="../static/assets/img/Penambahan (jisim).png" alt="Penambahan (jisim)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong>Penolakan<br></p>
-                                            <p><strong>9 kg 780 g - 2 kg 350 g</strong><br></p>
-                                            <img src="../static/assets/img/Penolakan (jisim).png" alt="Penolakan (jisim)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #8d4b37;">
-                                            <p><strong>Contoh:</strong>Pendaraban<br></p>
-                                            <p><strong>0.45 kg x 15</strong><br></p>
-                                            <img src="../static/assets/img/Pendaraban (jisim).png" alt="Pendaraban (jisim)">
-                                        </div>
-                                        <div class="item" style="border: 1px solid black; padding: 5px; background-color: #e57d68;">
-                                            <p><strong>Contoh:</strong>Pembahagian<br></p>
-                                            <p><strong>3.5 kg ÷ 7</strong><br></p>
-                                            <img src="../static/assets/img/Pembahagian (jisim).png" alt="Pembahagian (jisim)">
-                                        </div>
-                                    </div>
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">.</p>
-                                    <button class="btn btn-primary" onclick="goToConverter()">
-                                        <i class="fas fa-xmark fa-fw"></i>
-                                        Converter
-                                    </button>
+
+
+                                    <!-- About Box 2 -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <a href="/scale-game">
+                        <div class="portfolio-item mx-auto position-relative">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white">
+                                    <i class="fas fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
                                 </div>
                             </div>
                         </div>
@@ -385,6 +288,83 @@
                 </div>
             </div>
         </div>
+
+                <!-- Portfolio Modal 6-->
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title-->
+                            <h2 class="portfolio-modal-title mb-0">Pengukuran Asas</h2>
+                            <!-- Icon Divider-->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Portfolio Modal - Image and Button -->
+                            <div class="portfolio-item mx-auto position-relative">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white">
+                                        <i class="fas fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+
+
+    <div class="row flex-wrap">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('caraukur') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid rounded" src="../static/assets/img/ukur.png" alt="..." style="width: 80%; max-height: 200px;">
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('caratimbang') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid rounded" src="../static/assets/img/timbang.png" alt="..." style="width: 80%; max-height: 200px;" >
+            </div>
+        </a>
+    </div>
+
+    <div class="row flex-wrap">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('caratimbang') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+</div>
+</div>
+                                <!-- You can customize the button text and style here -->
+                                <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <i class="fas fa-xmark fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
         <!-- Portfolio Modal 3-->
 <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
@@ -463,6 +443,84 @@
     </div>
 </div>
 
+        <!-- Portfolio Modal 6-->
+<div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" aria-labelledby="portfolioModal7" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title-->
+                            <h2 class="portfolio-modal-title mb-0">Darab & Bahagi</h2>
+                            <!-- Icon Divider-->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Portfolio Modal - Image and Button -->
+                            <div class="portfolio-item mx-auto position-relative">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white">
+                                        <i class="fas fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+
+
+    <div class="row flex-wrap">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('calculator') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid rounded" src="../static/assets/img/calculator.png" alt="..." style="width: 80%; max-height: 200px;">
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('table') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid rounded" src="../static/assets/img/table.png" alt="..." style="width: 80%; max-height: 200px;" >
+            </div>
+        </a>
+    </div>
+
+    <div class="row flex-wrap">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <a href="{{ url_for('caratimbang') }}"> <!-- Update the href attribute to the desired page URL -->
+            <div class="portfolio-item mx-auto position-relative" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+</div>
+</div>
+                                <!-- You can customize the button text and style here -->
+                                <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <i class="fas fa-xmark fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <!-- Portfolio Modal 4-->
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -523,6 +581,10 @@
         <script>
     function goToCalculator() {
         window.location.href = '/calculator';
+    }
+
+    function goToSifir() {
+        window.location.href = '/multiplication';
     }
 
     function goToConverter() {

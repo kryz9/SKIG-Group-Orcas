@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>EasyMath</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +17,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-image: url('../static/assets/img/calc.png'); /* Replace 'your-background-image-url.jpg' with the URL of your image */
+            background-image: url('../static/assets/img/calc.png');
             background-size: cover;
         }
 
@@ -35,45 +36,60 @@
             margin: 5px;
             padding: 10px;
             cursor: pointer;
-            background-color: #f6e1dd; /* Adjust the background color */
+            background-color: #f6e1dd;
+            /* Adjust the background color */
 
         }
 
         /* Style for '*' and '/' buttons */
         .operator {
-            width: 128px; /* Adjust the width */
-            background-color: #f37e5b; /* Adjust the background color */
-            color: #000000; /* Adjust the text color */
+            width: 128px;
+            /* Adjust the width */
+            background-color: #f37e5b;
+            /* Adjust the background color */
+            color: #000000;
+            /* Adjust the text color */
         }
 
         .operator2 {
-            width: 128px; /* Adjust the width */
-            background-image: url("../static/assets/img/bahagi.png"); /* Adjust the background color */
+            width: 128px;
+            /* Adjust the width */
+            background-image: url("../static/assets/img/bahagi.png");
+            /* Adjust the background color */
             background-size: cover;
             background-position: center center;
-            color: #000000; /* Adjust the text color */
+            color: #000000;
+            /* Adjust the text color */
         }
 
         .btn {
-            width: 80px; /* Adjust the width */
-            background-color: #f37e5b; /* Adjust the background color */
-            color: #000000; /* Adjust the text color */
+            width: 80px;
+            /* Adjust the width */
+            background-color: #f37e5b;
+            /* Adjust the background color */
+            color: #000000;
+            /* Adjust the text color */
         }
 
         .result {
-            width: 270px; /* Adjust the width */
-            background-color: rgba(114, 60, 43, 0.78); /* Adjust the background color */
-            color: #000000; /* Adjust the text color */
+            width: 270px;
+            /* Adjust the width */
+            background-color: rgba(114, 60, 43, 0.78);
+            /* Adjust the background color */
+            color: #000000;
+            /* Adjust the text color */
         }
 
         /* Style for the additional button */
         .custom-button {
             position: absolute;
-            top: 10px; /* Adjust the distance from the top */
-            left: 10px; /* Adjust the distance from the left */
+            top: 10px;
+            /* Adjust the distance from the top */
+            left: 10px;
+            /* Adjust the distance from the left */
             background-color: #8d4b37;
             color: #ffffff;
-            background-image: url("../static/assets/img/back.png");
+            background-image: url("../static/assets/img/home.png");
             background-size: cover;
             background-position: center;
             text-decoration: none;
@@ -96,8 +112,8 @@
     <input type="text" id="result" disabled>
 
     <div class="row1">
-        <button onclick="operate(' X ')" class="operator">X</button>
-        <button onclick="operate(' / ')" class="operator2">/</button>
+        <button onclick="operate('*')" class="operator">X</button>
+        <button onclick="operate('/')" class="operator2">/</button>
     </div>
 
     <div class="row1">
@@ -128,7 +144,6 @@
         <button onclick="calculateResult()" class="result">=</button>
     </div>
 
-    <!-- Additional button for going to another page -->
     <a href="/home" class="custom-button"></a>
 
     <script>
@@ -147,10 +162,18 @@
 
         function calculateResult() {
             try {
-                document.getElementById('result').value = eval(document.getElementById('result').value);
+                let expression = document.getElementById('result').value;
+                let result = evaluateExpression(expression);
+                document.getElementById('result').value = result;
             } catch (error) {
+                console.error(error);
                 document.getElementById('result').value = 'Error';
             }
+        }
+
+        function evaluateExpression(expression) {
+            let sanitizedExpression = expression.replace(/[^-()\d/*+.]/g, '');
+            return new Function('return ' + sanitizedExpression)();
         }
 
         function operate(operator) {
